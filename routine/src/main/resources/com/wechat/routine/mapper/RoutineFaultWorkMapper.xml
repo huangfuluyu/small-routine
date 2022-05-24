@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wechat.routine.mapper.RoutineFaultWorkMapper">
+  <resultMap id="BaseResultMap" type="com.wechat.routine.pojo.RoutineFaultWork">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_unit" jdbcType="VARCHAR" property="userUnit" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_gender" jdbcType="INTEGER" property="userGender" />
+    <result column="user_phone" jdbcType="INTEGER" property="userPhone" />
+    <result column="fault_info" jdbcType="VARCHAR" property="faultInfo" />
+    <result column="fault_img" jdbcType="VARCHAR" property="faultImg" />
+    <result column="work_time" jdbcType="TIMESTAMP" property="workTime" />
+    <result column="fault_address" jdbcType="VARCHAR" property="faultAddress" />
+    <result column="fault_detail_address" jdbcType="VARCHAR" property="faultDetailAddress" />
+    <result column="question_info" jdbcType="VARCHAR" property="questionInfo"/>
+    <result column="solve_img" jdbcType="VARCHAR" property="solveImg" />
+    <result column="maintainer" jdbcType="VARCHAR" property="maintainer" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="door" jdbcType="VARCHAR" property="door" />
+    <result column="punch" jdbcType="VARCHAR" property="punch" />
+    <result column="work_deal_with_status" jdbcType="INTEGER" property="workDealWithStatus" />
+    <result column="work_state" jdbcType="INTEGER" property="workState" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, user_unit,user_name,user_gender,user_phone, fault_info, fault_img, work_time, fault_address, fault_detail_address, question_info,
+    solve_img, maintainer, remarks, door, punch, work_deal_with_status, work_state, create_time, 
+    modify_time
+  </sql>
+  <select id="selectByExample" parameterType="com.wechat.routine.pojo.RoutineFaultWorkExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from routine_fault_work
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from routine_fault_work
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from routine_fault_work
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wechat.routine.pojo.RoutineFaultWorkExample">
+    delete from routine_fault_work
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wechat.routine.pojo.RoutineFaultWork">
+    insert into routine_fault_work (id, user_id, fault_info, 
+      fault_img, work_time, fault_address, 
+      fault_detail_address, solve_img, maintainer, 
+      remarks, door, punch, 
+      work_deal_with_status, work_state, create_time, 
+      modify_time)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{faultInfo,jdbcType=VARCHAR}, 
+      #{faultImg,jdbcType=VARCHAR}, #{workTime,jdbcType=TIMESTAMP}, #{faultAddress,jdbcType=VARCHAR}, 
+      #{faultDetailAddress,jdbcType=VARCHAR}, #{solveImg,jdbcType=VARCHAR}, #{maintainer,jdbcType=VARCHAR}, 
+      #{remarks,jdbcType=VARCHAR}, #{door,jdbcType=VARCHAR}, #{punch,jdbcType=VARCHAR}, 
+      #{workDealWithStatus,jdbcType=INTEGER}, #{workState,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wechat.routine.pojo.RoutineFaultWork">
+    insert into routine_fault_work
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="faultInfo != null">
+        fault_info,
+      </if>
+      <if test="faultImg != null">
+        fault_img,
+      </if>
+      <if test="workTime != null">
+        work_time,
+      </if>
+      <if test="faultAddress != null">
+        fault_address,
+      </if>
+      <if test="faultDetailAddress != null">
+        fault_detail_address,
+      </if>
+      <if test="solveImg != null">
+        solve_img,
+      </if>
+      <if test="maintainer != null">
+        maintainer,
+      </if>
+      <if test="remarks != null">
+        remarks,
+      </if>
+      <if test="door != null">
+        door,
+      </if>
+      <if test="punch != null">
+        punch,
+      </if>
+      <if test="workDealWithStatus != null">
+        work_deal_with_status,
+      </if>
+      <if test="workState != null">
+        work_state,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="faultInfo != null">
+        #{faultInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="faultImg != null">
+        #{faultImg,jdbcType=VARCHAR},
+      </if>
+      <if test="workTime != null">
+        #{workTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="faultAddress != null">
+        #{faultAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="faultDetailAddress != null">
+        #{faultDetailAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="solveImg != null">
+        #{solveImg,jdbcType=VARCHAR},
+      </if>
+      <if test="maintainer != null">
+        #{maintainer,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="door != null">
+        #{door,jdbcType=VARCHAR},
+      </if>
+      <if test="punch != null">
+        #{punch,jdbcType=VARCHAR},
+      </if>
+      <if test="workDealWithStatus != null">
+        #{workDealWithStatus,jdbcType=INTEGER},
+      </if>
+      <if test="workState != null">
+        #{workState,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wechat.routine.pojo.RoutineFaultWorkExample" resultType="java.lang.Long">
+    select count(*) from routine_fault_work
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update routine_fault_work
+    <set>
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=INTEGER},
+      </if>
+      <if test="row.userId != null">
+        user_id = #{row.userId,jdbcType=INTEGER},
+      </if>
+      <if test="row.faultInfo != null">
+        fault_info = #{row.faultInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="row.faultImg != null">
+        fault_img = #{row.faultImg,jdbcType=VARCHAR},
+      </if>
+      <if test="row.workTime != null">
+        work_time = #{row.workTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.faultAddress != null">
+        fault_address = #{row.faultAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="row.faultDetailAddress != null">
+        fault_detail_address = #{row.faultDetailAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="row.solveImg != null">
+        solve_img = #{row.solveImg,jdbcType=VARCHAR},
+      </if>
+      <if test="row.maintainer != null">
+        maintainer = #{row.maintainer,jdbcType=VARCHAR},
+      </if>
+      <if test="row.remarks != null">
+        remarks = #{row.remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="row.door != null">
+        door = #{row.door,jdbcType=VARCHAR},
+      </if>
+      <if test="row.punch != null">
+        punch = #{row.punch,jdbcType=VARCHAR},
+      </if>
+      <if test="row.workDealWithStatus != null">
+        work_deal_with_status = #{row.workDealWithStatus,jdbcType=INTEGER},
+      </if>
+      <if test="row.workState != null">
+        work_state = #{row.workState,jdbcType=INTEGER},
+      </if>
+      <if test="row.createTime != null">
+        create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.modifyTime != null">
+        modify_time = #{row.modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update routine_fault_work
+    set id = #{row.id,jdbcType=INTEGER},
+      user_id = #{row.userId,jdbcType=INTEGER},
+      fault_info = #{row.faultInfo,jdbcType=VARCHAR},
+      fault_img = #{row.faultImg,jdbcType=VARCHAR},
+      work_time = #{row.workTime,jdbcType=TIMESTAMP},
+      fault_address = #{row.faultAddress,jdbcType=VARCHAR},
+      fault_detail_address = #{row.faultDetailAddress,jdbcType=VARCHAR},
+      solve_img = #{row.solveImg,jdbcType=VARCHAR},
+      maintainer = #{row.maintainer,jdbcType=VARCHAR},
+      remarks = #{row.remarks,jdbcType=VARCHAR},
+      door = #{row.door,jdbcType=VARCHAR},
+      punch = #{row.punch,jdbcType=VARCHAR},
+      work_deal_with_status = #{row.workDealWithStatus,jdbcType=INTEGER},
+      work_state = #{row.workState,jdbcType=INTEGER},
+      create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      modify_time = #{row.modifyTime,jdbcType=TIMESTAMP}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wechat.routine.pojo.RoutineFaultWork">
+    update routine_fault_work
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="faultInfo != null">
+        fault_info = #{faultInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="faultImg != null">
+        fault_img = #{faultImg,jdbcType=VARCHAR},
+      </if>
+      <if test="workTime != null">
+        work_time = #{workTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="faultAddress != null">
+        fault_address = #{faultAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="faultDetailAddress != null">
+        fault_detail_address = #{faultDetailAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="solveImg != null">
+        solve_img = #{solveImg,jdbcType=VARCHAR},
+      </if>
+      <if test="maintainer != null">
+        maintainer = #{maintainer,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="door != null">
+        door = #{door,jdbcType=VARCHAR},
+      </if>
+      <if test="punch != null">
+        punch = #{punch,jdbcType=VARCHAR},
+      </if>
+      <if test="workDealWithStatus != null">
+        work_deal_with_status = #{workDealWithStatus,jdbcType=INTEGER},
+      </if>
+      <if test="workState != null">
+        work_state = #{workState,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wechat.routine.pojo.RoutineFaultWork">
+    update routine_fault_work
+    set user_id = #{userId,jdbcType=INTEGER},
+      fault_info = #{faultInfo,jdbcType=VARCHAR},
+      fault_img = #{faultImg,jdbcType=VARCHAR},
+      work_time = #{workTime,jdbcType=TIMESTAMP},
+      fault_address = #{faultAddress,jdbcType=VARCHAR},
+      fault_detail_address = #{faultDetailAddress,jdbcType=VARCHAR},
+      solve_img = #{solveImg,jdbcType=VARCHAR},
+      maintainer = #{maintainer,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      door = #{door,jdbcType=VARCHAR},
+      punch = #{punch,jdbcType=VARCHAR},
+      work_deal_with_status = #{workDealWithStatus,jdbcType=INTEGER},
+      work_state = #{workState,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByExampleWithRowbounds" parameterType="com.wechat.routine.pojo.RoutineFaultWorkExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from routine_fault_work
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

@@ -1,0 +1,20 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: routine
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8001/eureka
+  instance:
+    instance-id: routine-9001
+    prefer-ip-address: true
+config:
+  jwt:
+    # 加密密钥
+    secret: abcdefg1234567
+    # token有效时长
+    expire: 3600
+    # header 名称
+    header: token
