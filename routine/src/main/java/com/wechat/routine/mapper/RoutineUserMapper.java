@@ -21,4 +21,6 @@ public interface RoutineUserMapper {
     int updateByPrimaryKeySelective(RoutineUser row);
 
     int updateByPrimaryKey(RoutineUser row);
+
+    RoutineUser selectByUserPhoneAndUserNameRoutineUser(RoutineUser row);
 }

@@ -18,4 +18,6 @@ public interface RoutineFaultWorkMapper {
     int updateByPrimaryKeySelective(RoutineFaultWork row);
 
     int updateByPrimaryKey(RoutineFaultWork row);
+
+    RoutineFaultWork selectByUserPhone(Integer userPhone);
 }

@@ -42,7 +42,7 @@ public class TokenController {
         String userId = 5 + "";
         String token = jwtConfig.createToken(userId) ;
         if (StringUtils.hasLength(token)) {
-            json.set("token",token) ;
+            json.set("token",token);
         }
         return ApiResponse.ofStatus(ExceptionEnum.OK,json);
     }

@@ -18,6 +18,8 @@ public class RoutineUser extends BaseTable {
 
     public String userUnit;
 
+    public String token;
+
     private static final long serialVersionUID = 1L;
 
 }

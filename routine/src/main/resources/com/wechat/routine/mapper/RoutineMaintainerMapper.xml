@@ -7,6 +7,7 @@
     <result column="maintainer_phone" jdbcType="INTEGER" property="maintainerPhone" />
     <result column="maintainer_account" jdbcType="VARCHAR" property="maintainerAccount" />
     <result column="maintainer_pwd" jdbcType="VARCHAR" property="maintainerPwd" />
+    <result column="token" jdbcType="VARCHAR" property="token"/>
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -67,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, maintainer_name, maintainer_phone, maintainer_account, maintainer_pwd
+    id, maintainer_name, maintainer_phone, maintainer_account, maintainer_pwd,token
   </sql>
   <select id="selectByExample" parameterType="com.wechat.routine.pojo.RoutineMaintainerExample" resultMap="BaseResultMap">
     select

@@ -17,6 +17,8 @@ public class RoutineFaultWorkReq {
      */
     public String userName;
 
+    public String password;
+
     /**
      * 性别
      */
@@ -25,7 +27,7 @@ public class RoutineFaultWorkReq {
     /**
      * 电话
      */
-    public String userPhone;
+    public Integer userPhone;
 
     /**
      * 故障描述

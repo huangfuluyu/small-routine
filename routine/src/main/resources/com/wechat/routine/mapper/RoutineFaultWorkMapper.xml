@@ -15,6 +15,7 @@
     <result column="question_info" jdbcType="VARCHAR" property="questionInfo"/>
     <result column="solve_img" jdbcType="VARCHAR" property="solveImg" />
     <result column="maintainer" jdbcType="VARCHAR" property="maintainer" />
+    <result column="maintainer_phone" jdbcType="INTEGER" property="maintainerPhone" />
     <result column="remarks" jdbcType="VARCHAR" property="remarks" />
     <result column="door" jdbcType="VARCHAR" property="door" />
     <result column="punch" jdbcType="VARCHAR" property="punch" />
@@ -129,6 +130,9 @@
       #{remarks,jdbcType=VARCHAR}, #{door,jdbcType=VARCHAR}, #{punch,jdbcType=VARCHAR}, 
       #{workDealWithStatus,jdbcType=INTEGER}, #{workState,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
       #{modifyTime,jdbcType=TIMESTAMP})
+    <selectKey resultType="java.lang.Long" keyProperty="id">
+        SELECT LAST_INSERT_ID() AS id
+    </selectKey>
   </insert>
   <insert id="insertSelective" parameterType="com.wechat.routine.pojo.RoutineFaultWork">
     insert into routine_fault_work
@@ -400,5 +404,12 @@
     <if test="orderByClause != null">
       order by ${orderByClause}
     </if>
+  </select>
+  <select id="selectByUserPhone" parameterType="java.lang.Integer" resultType="com.wechat.routine.pojo.RoutineFaultWork">
+    select
+    <include refid="Base_Column_List" />
+    from routine_fault_work
+    where user_phone = #{userPhone,jdbcType=INTEGER}
+    limit 1;
   </select>
 </mapper>

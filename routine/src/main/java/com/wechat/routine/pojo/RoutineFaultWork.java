@@ -33,6 +33,8 @@ public class RoutineFaultWork extends BaseTable {
 
     public String maintainer;
 
+    public Integer maintainerPhone;
+
     public String remarks;
 
     public String door;

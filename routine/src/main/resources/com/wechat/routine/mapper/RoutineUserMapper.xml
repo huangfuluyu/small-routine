@@ -9,6 +9,7 @@
     <result column="user_unit" jdbcType="VARCHAR" property="userUnit" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="token" jdbcType="VARCHAR" property="token"/>
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, user_name, user_gender, user_phone, user_unit, create_time, modify_time
+    id, user_name, user_gender, user_phone, user_unit, create_time, modify_time token
   </sql>
   <select id="selectByExample" parameterType="com.wechat.routine.pojo.RoutineUserExample" resultMap="BaseResultMap">
     select
@@ -103,11 +104,11 @@
   </delete>
   <insert id="insert" parameterType="com.wechat.routine.pojo.RoutineUser">
     insert into routine_user (id, user_name, user_gender, 
-      user_phone, user_unit, create_time, 
+      user_phone, user_unit, create_time, token
       modify_time)
     values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{userGender,jdbcType=SMALLINT}, 
       #{userPhone,jdbcType=INTEGER}, #{userUnit,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{modifyTime,jdbcType=TIMESTAMP})
+      #{modifyTime,jdbcType=TIMESTAMP},#{token,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.wechat.routine.pojo.RoutineUser">
     insert into routine_user
@@ -253,5 +254,11 @@
     <if test="orderByClause != null">
       order by ${orderByClause}
     </if>
+  </select>
+  <select id="selectByUserPhoneAndUserNameRoutineUser" parameterType="com.wechat.routine.pojo.RoutineUser" resultType="com.wechat.routine.pojo.RoutineUser">
+    select
+      <include refid="Base_Column_List" />
+    from routine_user
+    where user_name = #{userName,jdbcType=VARCHAR} and user_phone =#{userPhone,jdbcType=INTEGER}
   </select>
 </mapper>
