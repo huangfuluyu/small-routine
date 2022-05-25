@@ -3,6 +3,8 @@ package com.wechat.routine.controller;
 import com.ctc.wstx.util.StringUtil;
 import com.wechat.routine.common.Constant;
 import com.wechat.routine.common.req.RoutineFaultWorkReq;
+import com.wechat.routine.common.resp.RoutineFaultWorkResp;
+import com.wechat.routine.common.resp.RoutineWorkScheduleResp;
 import com.wechat.routine.config.JwtConfig;
 import com.wechat.routine.enums.ExceptionEnum;
 import com.wechat.routine.mapper.RoutineFaultWorkMapper;
@@ -14,6 +16,7 @@ import com.wechat.routine.pojo.RoutineMaintainer;
 import com.wechat.routine.pojo.RoutineUser;
 import com.wechat.routine.pojo.RoutineWorkSchedule;
 import com.wechat.routine.utils.ApiResponse;
+import io.jsonwebtoken.Claims;
 import lombok.val;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +28,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.security.SignatureException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @RestController
 public class RoutineController {
@@ -63,19 +69,23 @@ public class RoutineController {
         //创建token
         RoutineUser user = new RoutineUser();
         BeanUtils.copyProperties(req, user);
-        String token = jwtConfig.createToken(req.userName + req.userPhone);
-        user.setToken(token);
-        routineUserMapper.insert(user);
+//        String token = jwtConfig.createToken(req.userName + req.userPhone);
+//        user.setToken(token);
+//        routineUserMapper.insert(user);
 
-//        val routineUser = routineUserMapper.selectByUserPhoneAndUserNameRoutineUser(user);
+        val routineUser = routineUserMapper.selectByUserPhoneAndUserNameRoutineUser(user);
         //不存在创建用户,存在
-//        if(routineUser==null){
-//            String token = jwtConfig.createToken(req.userName + req.userPhone);
-//            user.setToken(token);
-//            routineUserMapper.insert(user);
-//        }else {
-//            routineUserMapper.updateByPrimaryKey(routineUser);
-//        }
+        if(routineUser==null){
+            String token = jwtConfig.createToken(req.getUserName() + req.getUserPhone());
+            user.setToken(token);
+            routineUserMapper.insert(user);
+        }else {
+            //存在更新
+            String token = jwtConfig.createToken(routineUser.getId().toString());
+            routineUser.setToken(token);
+            routineUserMapper.updateByPrimaryKey(routineUser);
+        }
+
         //插入工单
         RoutineFaultWork faultWork = new RoutineFaultWork();
         BeanUtils.copyProperties(req, faultWork);
@@ -89,7 +99,6 @@ public class RoutineController {
         schedule.setWorkId(String.valueOf(workId));
         schedule.setSchedule(list.toString());
         routineWorkScheduleMapper.insert(schedule);
-
 
         return ApiResponse.ofStatus(ExceptionEnum.OK);
     }
@@ -110,29 +119,40 @@ public class RoutineController {
     /**
      * 获取工单处理进度
      */
-    public ApiResponse getWorkSchedule(@RequestParam String workId) {
-        return ApiResponse.ofMessage(null);
+    public ApiResponse getWorkSchedule(@RequestParam Long workId) {
+        val workSchedule= routineWorkScheduleMapper.selectByWorkId(workId.intValue());
+        List<String> schedule =  Stream.of(workSchedule.getSchedule()).collect(Collectors.toList());
+        RoutineWorkScheduleResp resp = new RoutineWorkScheduleResp();
+        resp.setWorkId(workSchedule.getWorkId());
+        resp.setSchedule(schedule);
+        return ApiResponse.ofStatus(ExceptionEnum.OK,resp);
     }
 
     /**
      * '
      * 查看报障信息
      */
-    public ApiResponse getUserFailureInfo(@RequestParam String workId) {
-        return ApiResponse.ofMessage(null);
+    public ApiResponse getUserFailureInfo(@RequestParam Long workId) {
+        RoutineFaultWorkResp workResp = new RoutineFaultWorkResp();
+        val work = routineFaultWorkMapper.selectByPrimaryKey(workId.intValue());
+        BeanUtils.copyProperties(work,workResp);
+        return ApiResponse.ofStatus(ExceptionEnum.OK,workResp);
     }
 
     /**
      * 修改报障信息
      */
-    public ApiResponse updateUserFailureInfo(@RequestBody RoutineFaultWork faultWork) {
-        return ApiResponse.ofMessage(null);
+    public ApiResponse updateUserFailureInfo(@RequestBody RoutineFaultWorkReq req) {
+        RoutineFaultWork faultWork = new RoutineFaultWork();
+        BeanUtils.copyProperties(req,faultWork);
+        return ApiResponse.ofStatus(ExceptionEnum.OK);
     }
 
     /**
      * 获取维护人员信息
      */
-    public ApiResponse getMaintainerInfo(@RequestParam String maintainer) {
+    public ApiResponse getMaintainerInfo(@RequestParam String account) {
+
         return ApiResponse.ofMessage(null);
     }
 
@@ -140,6 +160,7 @@ public class RoutineController {
      * 根据类型查询所有工单
      */
     public ApiResponse getAllFaultWorkByType(@RequestParam String type) {
+
         return ApiResponse.ofMessage(null);
     }
 

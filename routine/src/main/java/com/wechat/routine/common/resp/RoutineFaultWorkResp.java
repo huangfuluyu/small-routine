@@ -1,15 +1,14 @@
-package com.wechat.routine.pojo;
+package com.wechat.routine.common.resp;
 
 import com.wechat.routine.common.BaseTable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
 import java.util.Date;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class RoutineFaultWork extends BaseTable {
+public class RoutineFaultWorkResp extends BaseTable {
 
     public String userUnit;
 
@@ -18,6 +17,7 @@ public class RoutineFaultWork extends BaseTable {
     public String userGender;
 
     public String userPhone;
+
     public String faultInfo;
 
     public String faultImg;

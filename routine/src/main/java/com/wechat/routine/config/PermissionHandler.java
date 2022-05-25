@@ -1,8 +1,8 @@
 package com.wechat.routine.config;
 
-import com.example.demo.enums.ExceptionEnum;
-import com.example.demo.exceptions.BaseException;
-import com.example.demo.utils.ApiResponse;
+import com.wechat.routine.enums.ExceptionEnum;
+import com.wechat.routine.exceptions.BaseException;
+import com.wechat.routine.utils.ApiResponse;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;

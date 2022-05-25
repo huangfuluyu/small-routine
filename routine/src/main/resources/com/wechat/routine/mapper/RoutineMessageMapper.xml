@@ -3,6 +3,7 @@
 <mapper namespace="com.wechat.routine.mapper.RoutineMessageMapper">
     <resultMap id="BaseResultMap" type="com.wechat.routine.pojo.RoutineMessage">
         <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="work_id" jdbcType="INTEGER" property="workId"/>
         <result column="user_id" jdbcType="INTEGER" property="userId" />
         <result column="user_type" jdbcType="INTEGER" property="userType" />
         <result column="messages" jdbcType="VARCHAR" property="messages" />
@@ -10,6 +11,6 @@
         <result column="modify_time" jdbcType="VARCHAR" property="modifyTime" />
     </resultMap>
     <sql id="Base_Column_List">
-        id, user_id, user_type, messages,create_time,modify_time
+        id, work_id, user_id, user_type, messages,create_time,modify_time
     </sql>
 </mapper>

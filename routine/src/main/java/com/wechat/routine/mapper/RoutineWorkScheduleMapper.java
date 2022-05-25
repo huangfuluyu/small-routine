@@ -20,4 +20,6 @@ public interface RoutineWorkScheduleMapper {
     int updateByPrimaryKeySelective(RoutineWorkSchedule row);
 
     int updateByPrimaryKey(RoutineWorkSchedule row);
+
+    RoutineWorkSchedule selectByWorkId(Integer workId);
 }

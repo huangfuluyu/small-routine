@@ -28,7 +28,7 @@ public class TokenInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         // 地址过滤
         String uri = request.getRequestURI() ;
-        if (uri.contains("/login")){
+        if (uri.contains("/login")||uri.contains("/addFailure")){
             return true ;
         }
 
