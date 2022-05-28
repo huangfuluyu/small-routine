@@ -4,6 +4,8 @@ import com.wechat.routine.pojo.RoutineFaultWork;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Mapper
 @Component
 public interface RoutineFaultWorkMapper {
@@ -21,5 +23,5 @@ public interface RoutineFaultWorkMapper {
 
     RoutineFaultWork selectByUserPhone(Integer userPhone);
 
-
+    List<RoutineFaultWork> selectAllByWorkState(Integer workState);
 }

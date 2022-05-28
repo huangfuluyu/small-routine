@@ -1,21 +1,20 @@
 package com.wechat.routine.controller;
 
 import com.ctc.wstx.util.StringUtil;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.wechat.routine.common.Constant;
 import com.wechat.routine.common.req.RoutineFaultWorkReq;
 import com.wechat.routine.common.resp.RoutineFaultWorkResp;
 import com.wechat.routine.common.resp.RoutineWorkScheduleResp;
 import com.wechat.routine.config.JwtConfig;
 import com.wechat.routine.enums.ExceptionEnum;
-import com.wechat.routine.mapper.RoutineFaultWorkMapper;
-import com.wechat.routine.mapper.RoutineMaintainerMapper;
-import com.wechat.routine.mapper.RoutineUserMapper;
-import com.wechat.routine.mapper.RoutineWorkScheduleMapper;
-import com.wechat.routine.pojo.RoutineFaultWork;
-import com.wechat.routine.pojo.RoutineMaintainer;
-import com.wechat.routine.pojo.RoutineUser;
-import com.wechat.routine.pojo.RoutineWorkSchedule;
+import com.wechat.routine.mapper.*;
+import com.wechat.routine.pojo.*;
 import com.wechat.routine.utils.ApiResponse;
+import com.wechat.routine.utils.PageRequest;
+import com.wechat.routine.utils.PageUtil;
+import com.wechat.routine.utils.ShiroKit;
 import io.jsonwebtoken.Claims;
 import lombok.val;
 import org.springframework.beans.BeanUtils;
@@ -52,12 +51,31 @@ public class RoutineController {
     @Autowired
     RoutineMaintainerMapper routineMaintainerMapper;
 
+    @Autowired
+    UserMapper userMapper;
+
+
+    public ApiResponse getToken(@RequestParam("userName") String userName,
+                                @RequestParam("passWord") String passWord){
+        return null;
+    }
+
     /**
      * 维护人员登陆
      */
     @PostMapping("/login")
-    public ApiResponse loginUser(@RequestBody RoutineFaultWorkReq req) {
-        return null;
+    public ApiResponse loginUser(@RequestParam String userName,@RequestParam String password) {
+
+        User user = userMapper.selectByAccount(userName);
+
+        if(user != null){
+            String mdPassWord = ShiroKit.md5(password,user.getSalt());
+            if(user.getPassword().equals(mdPassWord)){
+                String token = jwtConfig.createToken(userName);
+                return ApiResponse.ofStatus(ExceptionEnum.OK,token);
+            }
+        }
+        return ApiResponse.ofStatus(ExceptionEnum.LOGIN_ERROR);
     }
 
     /**
@@ -145,6 +163,7 @@ public class RoutineController {
     public ApiResponse updateUserFailureInfo(@RequestBody RoutineFaultWorkReq req) {
         RoutineFaultWork faultWork = new RoutineFaultWork();
         BeanUtils.copyProperties(req,faultWork);
+        routineFaultWorkMapper.updateByPrimaryKey(faultWork);
         return ApiResponse.ofStatus(ExceptionEnum.OK);
     }
 
@@ -159,9 +178,12 @@ public class RoutineController {
     /**
      * 根据类型查询所有工单
      */
-    public ApiResponse getAllFaultWorkByType(@RequestParam String type) {
-
-        return ApiResponse.ofMessage(null);
+    public ApiResponse getAllFaultWorkByType(@RequestParam PageRequest pageRequest, @RequestParam Integer type) {
+        int pageNum = pageRequest.getPageNum();
+        int pageSize = pageRequest.getPageSize();
+        PageHelper.startPage(pageNum,pageSize);
+        val workList = routineFaultWorkMapper.selectAllByWorkState(type);
+        return ApiResponse.ofSuccess(new PageInfo<>(workList));
     }
 
     /**

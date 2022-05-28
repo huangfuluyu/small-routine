@@ -412,4 +412,10 @@
     where user_phone = #{userPhone,jdbcType=INTEGER}
     limit 1;
   </select>
+    <select id="selectAllByWorkState" resultType="com.wechat.routine.pojo.RoutineFaultWork" parameterType="java.lang.Integer">
+      select
+      <include refid="Base_Column_List" />
+      from routine_fault_work
+      where work_state = #{workState,javaType=INTEGER}
+    </select>
 </mapper>

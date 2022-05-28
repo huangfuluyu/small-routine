@@ -9,7 +9,9 @@ package com.wechat.routine.enums;
 public enum ExceptionEnum {
     // 200
     OK(200,"操作成功"),
+
     // 400
+    LOGIN_ERROR(400,"用户名不存在"),
     BAD_REQUEST(400, "请求数据格式不正确!"),
     UNAUTHORIZED(401, "登录凭证过期!"),
     FORBIDDEN(403, "没有访问权限!"),
