@@ -9,6 +9,9 @@ import java.io.Serializable;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class RoutineMaintainer extends BaseTable {
+
+    private Integer leaderId;
+
     private String maintainerName;
 
     private Integer maintainerPhone;

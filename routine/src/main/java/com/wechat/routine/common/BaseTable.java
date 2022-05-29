@@ -11,6 +11,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BaseTable implements Serializable {
+
     public Long id;
     public Date createTime;
     public Date modifyTime;

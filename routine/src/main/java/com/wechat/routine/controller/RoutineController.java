@@ -16,15 +16,15 @@ import com.wechat.routine.utils.PageRequest;
 import com.wechat.routine.utils.PageUtil;
 import com.wechat.routine.utils.ShiroKit;
 import io.jsonwebtoken.Claims;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import lombok.val;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.security.SignatureException;
@@ -34,6 +34,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @RestController
+@RequestMapping("/hf")
+@Api("小程序接口管理")
 public class RoutineController {
 
     @Autowired
@@ -52,11 +54,25 @@ public class RoutineController {
     RoutineMaintainerMapper routineMaintainerMapper;
 
     @Autowired
+    RoutineScoreMapper routineScoreMapper;
+
+    @Autowired
     UserMapper userMapper;
 
+    @GetMapping("/test")
+    public String a(){
+        return "aaaa";
+    }
 
+    @GetMapping("/test1")
+    public String b(){
+        return "bbbb";
+    }
+
+    @PostMapping("/getToken")
+    @ApiOperation("获取token")
     public ApiResponse getToken(@RequestParam("userName") String userName,
-                                @RequestParam("passWord") String passWord){
+                                @RequestParam("passWord") String passWord) {
         return null;
     }
 
@@ -64,15 +80,16 @@ public class RoutineController {
      * 维护人员登陆
      */
     @PostMapping("/login")
-    public ApiResponse loginUser(@RequestParam String userName,@RequestParam String password) {
+    @ApiOperation("维护人员登陆")
+    public ApiResponse loginUser(@RequestParam String userName, @RequestParam String password) {
 
         User user = userMapper.selectByAccount(userName);
 
-        if(user != null){
-            String mdPassWord = ShiroKit.md5(password,user.getSalt());
-            if(user.getPassword().equals(mdPassWord)){
+        if (user != null) {
+            String mdPassWord = ShiroKit.md5(password, user.getSalt());
+            if (user.getPassword().equals(mdPassWord)) {
                 String token = jwtConfig.createToken(userName);
-                return ApiResponse.ofStatus(ExceptionEnum.OK,token);
+                return ApiResponse.ofStatus(ExceptionEnum.OK, token);
             }
         }
         return ApiResponse.ofStatus(ExceptionEnum.LOGIN_ERROR);
@@ -82,22 +99,20 @@ public class RoutineController {
      * 添加报障信息
      */
     @PostMapping("/addFailure")
+    @ApiOperation("添加保障信息")
     public ApiResponse addFailure(@RequestBody RoutineFaultWorkReq req) {
 
         //创建token
         RoutineUser user = new RoutineUser();
         BeanUtils.copyProperties(req, user);
-//        String token = jwtConfig.createToken(req.userName + req.userPhone);
-//        user.setToken(token);
-//        routineUserMapper.insert(user);
 
         val routineUser = routineUserMapper.selectByUserPhoneAndUserNameRoutineUser(user);
         //不存在创建用户,存在
-        if(routineUser==null){
+        if (routineUser == null) {
             String token = jwtConfig.createToken(req.getUserName() + req.getUserPhone());
             user.setToken(token);
             routineUserMapper.insert(user);
-        }else {
+        } else {
             //存在更新
             String token = jwtConfig.createToken(routineUser.getId().toString());
             routineUser.setToken(token);
@@ -124,7 +139,8 @@ public class RoutineController {
     /**
      * 根据手机号查询报障记录
      */
-    @PostMapping("getUserFailureRecord")
+    @ApiOperation("根据手机号查询保障记录")
+    @PostMapping("/getUserFailureRecord")
     private ApiResponse getUserFailureRecord(@RequestParam Integer phone) {
         val userFaultWork = routineFaultWorkMapper.selectByUserPhone(phone);
         if (userFaultWork == null) {
@@ -137,51 +153,51 @@ public class RoutineController {
     /**
      * 获取工单处理进度
      */
+    @GetMapping("/getWorkSchedule")
+    @ApiOperation("获取工单处理进度")
     public ApiResponse getWorkSchedule(@RequestParam Long workId) {
-        val workSchedule= routineWorkScheduleMapper.selectByWorkId(workId.intValue());
-        List<String> schedule =  Stream.of(workSchedule.getSchedule()).collect(Collectors.toList());
+        val workSchedule = routineWorkScheduleMapper.selectByWorkId(workId.intValue());
+        List<String> schedule = Stream.of(workSchedule.getSchedule()).collect(Collectors.toList());
         RoutineWorkScheduleResp resp = new RoutineWorkScheduleResp();
         resp.setWorkId(workSchedule.getWorkId());
         resp.setSchedule(schedule);
-        return ApiResponse.ofStatus(ExceptionEnum.OK,resp);
+        return ApiResponse.ofStatus(ExceptionEnum.OK, resp);
     }
 
     /**
      * '
      * 查看报障信息
      */
+    @GetMapping("/getUserFailureInfo")
+    @ApiOperation("查看报障信息")
     public ApiResponse getUserFailureInfo(@RequestParam Long workId) {
         RoutineFaultWorkResp workResp = new RoutineFaultWorkResp();
         val work = routineFaultWorkMapper.selectByPrimaryKey(workId.intValue());
-        BeanUtils.copyProperties(work,workResp);
-        return ApiResponse.ofStatus(ExceptionEnum.OK,workResp);
+        BeanUtils.copyProperties(work, workResp);
+        return ApiResponse.ofStatus(ExceptionEnum.OK, workResp);
     }
 
     /**
      * 修改报障信息
      */
+    @ApiOperation("修改报障信息")
+    @PostMapping("/updateUserFailureInfo")
     public ApiResponse updateUserFailureInfo(@RequestBody RoutineFaultWorkReq req) {
         RoutineFaultWork faultWork = new RoutineFaultWork();
-        BeanUtils.copyProperties(req,faultWork);
+        BeanUtils.copyProperties(req, faultWork);
         routineFaultWorkMapper.updateByPrimaryKey(faultWork);
         return ApiResponse.ofStatus(ExceptionEnum.OK);
     }
 
     /**
-     * 获取维护人员信息
-     */
-    public ApiResponse getMaintainerInfo(@RequestParam String account) {
-
-        return ApiResponse.ofMessage(null);
-    }
-
-    /**
      * 根据类型查询所有工单
      */
+    @ApiOperation("根据类型查询所有工单")
+    @PostMapping("/getAllFaultWorkByType")
     public ApiResponse getAllFaultWorkByType(@RequestParam PageRequest pageRequest, @RequestParam Integer type) {
         int pageNum = pageRequest.getPageNum();
         int pageSize = pageRequest.getPageSize();
-        PageHelper.startPage(pageNum,pageSize);
+        PageHelper.startPage(pageNum, pageSize);
         val workList = routineFaultWorkMapper.selectAllByWorkState(type);
         return ApiResponse.ofSuccess(new PageInfo<>(workList));
     }
@@ -189,8 +205,22 @@ public class RoutineController {
     /**
      * 获取维护人员列表
      */
-    public ApiResponse getMaintainer() {
-        return null;
+    @ApiOperation("获取维护人员列表")
+    public ApiResponse getMaintainer(@RequestParam PageRequest pageRequest) {
+        PageHelper.startPage(pageRequest.getPageNum(), pageRequest.getPageSize());
+        val result = routineMaintainerMapper.selectAll();
+        return ApiResponse.ofSuccess(new PageInfo<>(result));
+    }
+
+    /**
+     * 获取上级管理员列表
+     *
+     * @return
+     */
+    @ApiOperation("获取上级管理员列表")
+    public ApiResponse getLeaders() {
+        val result = userMapper.selectByRoleidUsers();
+        return ApiResponse.ofSuccess(new PageInfo<>(result));
     }
 
     /**
@@ -201,17 +231,14 @@ public class RoutineController {
     }
 
     /**
-     * 维护人员登陆
-     */
-    public ApiResponse loginMaintainer() {
-        return null;
-    }
-
-    /**
      * 满意度问卷
      */
-    public ApiResponse addQuis() {
-        return null;
+    @ApiOperation("满意度问卷")
+    public ApiResponse addQuis(RoutineScore routineScore) {
+
+        int result = routineScoreMapper.insertRoutineScore(routineScore);
+
+        return ApiResponse.ofStatus(ExceptionEnum.OK, result);
     }
 
 

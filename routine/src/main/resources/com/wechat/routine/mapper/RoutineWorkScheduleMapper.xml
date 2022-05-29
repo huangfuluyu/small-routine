@@ -64,24 +64,6 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.wechat.routine.pojo.RoutineWorkSchedule">
-    update routine_work_schedule
-    <set>
-      <if test="workId != null">
-        work_id = #{workId,jdbcType=VARCHAR},
-      </if>
-      <if test="schedule != null">
-        schedule = #{schedule,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
-        create_time = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="modifyTime != null">
-        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
   <update id="updateByPrimaryKey" parameterType="com.wechat.routine.pojo.RoutineWorkSchedule">
     update routine_work_schedule
     set work_id = #{workId,jdbcType=VARCHAR},
@@ -91,6 +73,6 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByWorkId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select <include refid="Base_Column_List"/> from routine_work_schedule where work_id= #{workId,jdbcType=InTEGER}
+    select <include refid="Base_Column_List"/> from routine_work_schedule where work_id= #{workId,jdbcType=INTEGER}
   </select>
 </mapper>

@@ -1,10 +1,9 @@
 package com.wechat.routine.mapper;
 
+import com.wechat.routine.pojo.RoutineScore;
 import com.wechat.routine.pojo.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 /**
  * @author : HuangFu
@@ -14,12 +13,13 @@ import java.util.List;
 
 @Mapper
 @Component
-public interface UserMapper {
+public interface RoutineScoreMapper {
 
-    List<User> selectByRoleidUsers();
-
-    User selectByUserNameAndPassword(String account,String password);
-
-    User selectByAccount(String account);
+    /**
+     * 插入满意度
+     * @param score
+     * @return
+     */
+    int insertRoutineScore(RoutineScore score);
 
 }

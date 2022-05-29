@@ -3,6 +3,8 @@ package com.wechat.routine.utils;
 
 import com.wechat.routine.enums.ExceptionEnum;
 import com.wechat.routine.exceptions.BaseException;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
@@ -11,9 +13,22 @@ import lombok.Data;
  * @date : 2022-05-24 11:27
  **/
 @Data
+@ApiModel(value = "通用PI接口返回", description = "Common Api Response")
 public class ApiResponse {
+    /**
+     * 通用返回状态
+     */
+    @ApiModelProperty(value = "通用返回状态", required = true)
     private Integer code;
+    /**
+     * 通用返回信息
+     */
+    @ApiModelProperty(value = "通用返回信息", required = true)
     private String message;
+    /**
+     * 通用返回数据
+     */
+    @ApiModelProperty(value = "通用返回数据", required = true)
     private Object data;
 
     private ApiResponse() {
@@ -83,7 +98,7 @@ public class ApiResponse {
      *
      * @param t    异常
      * @param data 返回数据
-     * @param <T>   的子类
+     * @param <T>  的子类
      * @return ApiResponse
      */
     public static <T extends BaseException> ApiResponse ofException(T t, Object data) {

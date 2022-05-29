@@ -11,81 +11,9 @@
     <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
     <result column="token" jdbcType="VARCHAR" property="token"/>
   </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
   <sql id="Base_Column_List">
     id, user_name, user_gender, user_phone, user_unit, create_time, modify_time token
   </sql>
-  <select id="selectByExample" parameterType="com.wechat.routine.pojo.RoutineUserExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from routine_user
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
@@ -95,12 +23,6 @@
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from routine_user
     where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.wechat.routine.pojo.RoutineUserExample">
-    delete from routine_user
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
   </delete>
   <insert id="insert" parameterType="com.wechat.routine.pojo.RoutineUser">
     insert into routine_user (id, user_name, user_gender, 
@@ -159,54 +81,6 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.wechat.routine.pojo.RoutineUserExample" resultType="java.lang.Long">
-    select count(*) from routine_user
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update routine_user
-    <set>
-      <if test="row.id != null">
-        id = #{row.id,jdbcType=INTEGER},
-      </if>
-      <if test="row.userName != null">
-        user_name = #{row.userName,jdbcType=VARCHAR},
-      </if>
-      <if test="row.userGender != null">
-        user_gender = #{row.userGender,jdbcType=SMALLINT},
-      </if>
-      <if test="row.userPhone != null">
-        user_phone = #{row.userPhone,jdbcType=INTEGER},
-      </if>
-      <if test="row.userUnit != null">
-        user_unit = #{row.userUnit,jdbcType=VARCHAR},
-      </if>
-      <if test="row.createTime != null">
-        create_time = #{row.createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="row.modifyTime != null">
-        modify_time = #{row.modifyTime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    <if test="example != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update routine_user
-    set id = #{row.id,jdbcType=INTEGER},
-      user_name = #{row.userName,jdbcType=VARCHAR},
-      user_gender = #{row.userGender,jdbcType=SMALLINT},
-      user_phone = #{row.userPhone,jdbcType=INTEGER},
-      user_unit = #{row.userUnit,jdbcType=VARCHAR},
-      create_time = #{row.createTime,jdbcType=TIMESTAMP},
-      modify_time = #{row.modifyTime,jdbcType=TIMESTAMP}
-    <if test="example != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.wechat.routine.pojo.RoutineUser">
     update routine_user
     <set>
@@ -241,20 +115,6 @@
       modify_time = #{modifyTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectByExampleWithRowbounds" parameterType="com.wechat.routine.pojo.RoutineUserExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from routine_user
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
   <select id="selectByUserPhoneAndUserNameRoutineUser" parameterType="com.wechat.routine.pojo.RoutineUser" resultType="com.wechat.routine.pojo.RoutineUser">
     select
       <include refid="Base_Column_List" />

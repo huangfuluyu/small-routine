@@ -3,6 +3,7 @@
 <mapper namespace="com.wechat.routine.mapper.RoutineMaintainerMapper">
   <resultMap id="BaseResultMap" type="com.wechat.routine.pojo.RoutineMaintainer">
     <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="leader_id" jdbcType="INTEGER" property="leaderId"/>
     <result column="maintainer_name" jdbcType="VARCHAR" property="maintainerName" />
     <result column="maintainer_phone" jdbcType="INTEGER" property="maintainerPhone" />
     <result column="maintainer_account" jdbcType="VARCHAR" property="maintainerAccount" />
@@ -68,22 +69,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, maintainer_name, maintainer_phone, maintainer_account, maintainer_pwd,token
+    id, leaderId,maintainer_name, maintainer_phone, maintainer_account, maintainer_pwd,token
   </sql>
-  <select id="selectByExample" parameterType="com.wechat.routine.pojo.RoutineMaintainerExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from routine_maintainer
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
@@ -93,12 +81,6 @@
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from routine_maintainer
     where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.wechat.routine.pojo.RoutineMaintainerExample">
-    delete from routine_maintainer
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
   </delete>
   <insert id="insert" parameterType="com.wechat.routine.pojo.RoutineMaintainer">
     insert into routine_maintainer (id, maintainer_name, maintainer_phone, 
@@ -143,46 +125,6 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.wechat.routine.pojo.RoutineMaintainerExample" resultType="java.lang.Long">
-    select count(*) from routine_maintainer
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update routine_maintainer
-    <set>
-      <if test="row.id != null">
-        id = #{row.id,jdbcType=INTEGER},
-      </if>
-      <if test="row.maintainerName != null">
-        maintainer_name = #{row.maintainerName,jdbcType=VARCHAR},
-      </if>
-      <if test="row.maintainerPhone != null">
-        maintainer_phone = #{row.maintainerPhone,jdbcType=INTEGER},
-      </if>
-      <if test="row.maintainerAccount != null">
-        maintainer_account = #{row.maintainerAccount,jdbcType=VARCHAR},
-      </if>
-      <if test="row.maintainerPwd != null">
-        maintainer_pwd = #{row.maintainerPwd,jdbcType=VARCHAR},
-      </if>
-    </set>
-    <if test="example != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update routine_maintainer
-    set id = #{row.id,jdbcType=INTEGER},
-      maintainer_name = #{row.maintainerName,jdbcType=VARCHAR},
-      maintainer_phone = #{row.maintainerPhone,jdbcType=INTEGER},
-      maintainer_account = #{row.maintainerAccount,jdbcType=VARCHAR},
-      maintainer_pwd = #{row.maintainerPwd,jdbcType=VARCHAR}
-    <if test="example != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.wechat.routine.pojo.RoutineMaintainer">
     update routine_maintainer
     <set>
@@ -209,18 +151,8 @@
       maintainer_pwd = #{maintainerPwd,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectByExampleWithRowbounds" parameterType="com.wechat.routine.pojo.RoutineMaintainerExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from routine_maintainer
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
+  <select id="selectAll" resultType="com.wechat.routine.pojo.RoutineMaintainer">
+    select <include refid="Base_Column_List" />
+        from routine_maintainer
   </select>
 </mapper>
