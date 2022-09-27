@@ -1,17 +1,28 @@
 package com.wechat.routine.common.req;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.Date;
+
 
 @Data
 @ApiModel(value = "工单请求参数")
 public class RoutineFaultWorkReq implements Serializable {
     private static final long serialVersionUID = 5057954049311281252L;
+
+    @ApiModelProperty("id")
+    public Long id;
+
+    @ApiModelProperty("工单号")
+    public String workId;
+
     /**
      * 用户单位
      */
@@ -34,7 +45,7 @@ public class RoutineFaultWorkReq implements Serializable {
      * 电话
      */
     @ApiModelProperty("电话")
-    public Integer userPhone;
+    public Long userPhone;
 
     /**
      * 故障描述

@@ -22,4 +22,10 @@ public class RoutineWorkScheduleResp implements Serializable {
     @ApiModelProperty("进度")
     public List<String> schedule;
 
+    public String name;
+
+    public Long phone;
+
+
+
 }

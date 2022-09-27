@@ -4,15 +4,15 @@
   <resultMap id="BaseResultMap" type="com.wechat.routine.pojo.RoutineUser">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
-    <result column="user_gender" jdbcType="SMALLINT" property="userGender" />
-    <result column="user_phone" jdbcType="INTEGER" property="userPhone" />
+    <result column="user_gender" jdbcType="VARCHAR" property="userGender" />
+    <result column="user_phone" jdbcType="BIGINT" property="userPhone" />
     <result column="user_unit" jdbcType="VARCHAR" property="userUnit" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
     <result column="token" jdbcType="VARCHAR" property="token"/>
   </resultMap>
   <sql id="Base_Column_List">
-    id, user_name, user_gender, user_phone, user_unit, create_time, modify_time token
+    id, user_name, user_gender, user_phone, user_unit, create_time, modify_time,token
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -24,13 +24,11 @@
     delete from routine_user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.wechat.routine.pojo.RoutineUser">
-    insert into routine_user (id, user_name, user_gender, 
-      user_phone, user_unit, create_time, token
-      modify_time)
-    values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{userGender,jdbcType=SMALLINT}, 
-      #{userPhone,jdbcType=INTEGER}, #{userUnit,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{modifyTime,jdbcType=TIMESTAMP},#{token,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="com.wechat.routine.pojo.RoutineUser" useGeneratedKeys="true" keyProperty="id">
+    insert into routine_user (user_name, user_gender,
+      user_phone, user_unit, token)
+    values  (#{userName,jdbcType=VARCHAR}, #{userGender,jdbcType=VARCHAR},
+      #{userPhone,jdbcType=BIGINT}, #{userUnit,jdbcType=VARCHAR},#{token,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.wechat.routine.pojo.RoutineUser">
     insert into routine_user
@@ -91,7 +89,7 @@
         user_gender = #{userGender,jdbcType=SMALLINT},
       </if>
       <if test="userPhone != null">
-        user_phone = #{userPhone,jdbcType=INTEGER},
+        user_phone = #{userPhone,jdbcType=BIGINT},
       </if>
       <if test="userUnit != null">
         user_unit = #{userUnit,jdbcType=VARCHAR},
@@ -109,16 +107,21 @@
     update routine_user
     set user_name = #{userName,jdbcType=VARCHAR},
       user_gender = #{userGender,jdbcType=SMALLINT},
-      user_phone = #{userPhone,jdbcType=INTEGER},
+      user_phone = #{userPhone,jdbcType=BIGINT},
       user_unit = #{userUnit,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+      token = #{token,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectByUserPhoneAndUserNameRoutineUser" parameterType="com.wechat.routine.pojo.RoutineUser" resultType="com.wechat.routine.pojo.RoutineUser">
+  <select id="selectByUserPhoneRoutineUser" parameterType="com.wechat.routine.pojo.RoutineUser" resultMap="BaseResultMap">
     select
       <include refid="Base_Column_List" />
     from routine_user
-    where user_name = #{userName,jdbcType=VARCHAR} and user_phone =#{userPhone,jdbcType=INTEGER}
+    where user_phone = #{userPhone,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByUserPhone" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from routine_user
+    where user_phone = #{userPhone,jdbcType=VARCHAR}
   </select>
 </mapper>

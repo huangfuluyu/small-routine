@@ -6,6 +6,10 @@ package com.wechat.routine.common;
  * @Description
  */
 public class Constant {
-    public static final String ONE_SCHEDULE =  "工单已提交,等待工作人员派单";
-    public static final String TWO_SCHEDULE =  "工作人员已派单";
+
+    /**
+     * 工单进度
+     */
+    public static final String ONE_SCHEDULE =  "工单已提交.等待工作人员派单";
+    public static final String TWO_SCHEDULE =  "工作人员正在派单...";
 }

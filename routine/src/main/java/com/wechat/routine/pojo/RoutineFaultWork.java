@@ -1,5 +1,6 @@
 package com.wechat.routine.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.wechat.routine.common.BaseTable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -11,13 +12,15 @@ import java.util.Date;
 @EqualsAndHashCode(callSuper = true)
 public class RoutineFaultWork extends BaseTable {
 
+    public String workId;
+
     public String userUnit;
 
     public String userName;
 
     public String userGender;
 
-    public String userPhone;
+    public Long userPhone;
     public String faultInfo;
 
     public String faultImg;
@@ -32,9 +35,8 @@ public class RoutineFaultWork extends BaseTable {
 
     public String solveImg;
 
-    public String maintainer;
-
-    public Integer maintainerPhone;
+    public Integer oldMaintainerId;
+    public Integer maintainerId;
 
     public String remarks;
 
@@ -45,6 +47,12 @@ public class RoutineFaultWork extends BaseTable {
     public Integer workDealWithStatus;
 
     public Integer workState;
+
+    public Integer workConfirm;
+    public Integer workScore;
+    public Date dispatchTime;
+
+    public Integer adminId;
 
     public static final long serialVersionUID = 1L;
 

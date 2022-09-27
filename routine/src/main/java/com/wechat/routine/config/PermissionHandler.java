@@ -21,4 +21,10 @@ public class PermissionHandler {
     public ApiResponse authorizationException(SignatureException e){
         return ApiResponse.ofException(new BaseException(ExceptionEnum.FORBIDDEN));
     }
+
+    @ExceptionHandler(value = { NullPointerException.class })
+    @ResponseBody
+    public ApiResponse nullPointerException(SignatureException e){
+        return ApiResponse.ofException(new BaseException(ExceptionEnum.INTERNAL_SERVER_ERROR));
+    }
 }

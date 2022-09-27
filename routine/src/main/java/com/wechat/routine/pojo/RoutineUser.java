@@ -12,9 +12,9 @@ import java.util.Date;
 public class RoutineUser extends BaseTable {
     public String userName;
 
-    public Short userGender;
+    public String userGender;
 
-    public Integer userPhone;
+    public Long userPhone;
 
     public String userUnit;
 

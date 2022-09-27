@@ -31,13 +31,9 @@ public class Swagger2Config {
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(new ApiInfoBuilder()
-                        .title("医疗系统")
-                        .description("用于管理患者信息的医疗系统平台")
+                        .title("一码通小程序")
+                        .description("杭分一码通小程序")
                         .version("1.0")
-                        .contact(new Contact("吕小白","https:www.baidu.com","****@qq.com")
-                        )
-                        .license("The Apache License")
-                        .licenseUrl("https:www.baidu.com")
                         .build());
     }
 

@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.wechat.routine.pojo.RoutineScore">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="work_id" jdbcType="INTEGER" property="workId" />
+    <result column="work_id" jdbcType="VARCHAR" property="workId" />
     <result column="unit_name" jdbcType="VARCHAR" property="unitName"/>
     <result column="remarks" jdbcType="VARCHAR" property="remarks"/>
     <result column="total_score" jdbcType="INTEGER" property="totalScore" />
@@ -14,11 +14,11 @@
   <sql id="Base_Column_List">
     id,user_id,work_id,unit_name,remarks, total_score,timely_score,professional_score
   </sql>
-  <insert id="insertRoutineScore">
+  <insert id="insertRoutineScore" parameterType="com.wechat.routine.pojo.RoutineScore">
     insert into
         routine_score(user_id,work_id,unit_name,remarks,total_score,timely_score,professional_score)
     values
-        (#{userId,jdbcType=INTEGER},#{workId,jdbcType=INTEGER},#{unitName,jdbcType=VARCHAR},
+        (#{userId,jdbcType=INTEGER},#{workId,jdbcType=VARCHAR},#{unitName,jdbcType=VARCHAR},
          #{remarks,jdbcType=VARCHAR}, #{totalScore,jdbcType=INTEGER},
         #{timelyScore,jdbcType=INTEGER},#{professionalScore,jdbcType=INTEGER})
   </insert>

@@ -13,13 +13,9 @@ public interface RoutineWorkScheduleMapper {
 
     int insert(RoutineWorkSchedule row);
 
-    int insertSelective(RoutineWorkSchedule row);
-
     RoutineWorkSchedule selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(RoutineWorkSchedule row);
 
     int updateByPrimaryKey(RoutineWorkSchedule row);
 
-    RoutineWorkSchedule selectByWorkId(Integer workId);
+    RoutineWorkSchedule selectByWorkId(String workId);
 }

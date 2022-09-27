@@ -1,6 +1,7 @@
 package com.wechat.routine.pojo;
 
 import com.wechat.routine.common.BaseTable;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -13,6 +14,7 @@ public class RoutineWorkSchedule extends BaseTable {
 
     public String workId;
 
+    @ApiModelProperty("")
     public String schedule;
 
     private static final long serialVersionUID = 1L;

@@ -13,11 +13,7 @@ public interface RoutineMaintainerMapper {
 
     int insert(RoutineMaintainer row);
 
-    int insertSelective(RoutineMaintainer row);
-
     RoutineMaintainer selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(RoutineMaintainer row);
 
     int updateByPrimaryKey(RoutineMaintainer row);
 

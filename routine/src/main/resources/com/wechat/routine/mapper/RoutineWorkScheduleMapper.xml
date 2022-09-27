@@ -22,10 +22,8 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.wechat.routine.pojo.RoutineWorkSchedule">
-    insert into routine_work_schedule (id, work_id, schedule, 
-      create_time, modify_time)
-    values (#{id,jdbcType=INTEGER}, #{workId,jdbcType=VARCHAR}, #{schedule,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP})
+    insert into routine_work_schedule (work_id, schedule)
+    values (#{workId,jdbcType=VARCHAR}, #{schedule,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.wechat.routine.pojo.RoutineWorkSchedule">
     insert into routine_work_schedule
@@ -72,7 +70,7 @@
       modify_time = #{modifyTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectByWorkId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select <include refid="Base_Column_List"/> from routine_work_schedule where work_id= #{workId,jdbcType=INTEGER}
+  <select id="selectByWorkId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/> from routine_work_schedule where work_id= #{workId,jdbcType=VARCHAR}
   </select>
 </mapper>

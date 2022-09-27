@@ -4,17 +4,16 @@ import com.wechat.routine.common.BaseTable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
-
 @Data
 @EqualsAndHashCode(callSuper = true)
+
 public class RoutineMaintainer extends BaseTable {
 
-    private Integer leaderId;
+    private String leaderIds;
 
     private String maintainerName;
 
-    private Integer maintainerPhone;
+    private Long maintainerPhone;
 
     private String maintainerAccount;
 

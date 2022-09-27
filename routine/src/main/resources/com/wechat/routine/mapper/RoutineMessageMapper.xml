@@ -3,14 +3,53 @@
 <mapper namespace="com.wechat.routine.mapper.RoutineMessageMapper">
     <resultMap id="BaseResultMap" type="com.wechat.routine.pojo.RoutineMessage">
         <id column="id" jdbcType="INTEGER" property="id" />
-        <result column="work_id" jdbcType="INTEGER" property="workId"/>
+        <result column="work_id" jdbcType="VARCHAR" property="workId"/>
         <result column="user_id" jdbcType="INTEGER" property="userId" />
         <result column="user_type" jdbcType="INTEGER" property="userType" />
-        <result column="messages" jdbcType="VARCHAR" property="messages" />
+        <result column="read_state" jdbcType="INTEGER" property="readState" />
+        <result column="messages" jdbcType="INTEGER" property="messages" />
         <result column="create_time" jdbcType="VARCHAR" property="createTime" />
         <result column="modify_time" jdbcType="VARCHAR" property="modifyTime" />
     </resultMap>
     <sql id="Base_Column_List">
-        id, work_id, user_id, user_type, messages,create_time,modify_time
+        id, work_id, user_id, user_type,read_state, messages,create_time,modify_time
     </sql>
+
+    <insert id="insertRoutineMessage" parameterType="com.wechat.routine.pojo.RoutineMessage">
+        insert into routine_message(work_id, user_id, user_type,messages)
+        values (#{workId,jdbcType=VARCHAR},#{userId,jdbcType=INTEGER},#{userType,jdbcType=INTEGER},#{messages,jdbcType=INTEGER})
+    </insert>
+    <insert id="insertRoutineMessageByTime" parameterType="com.wechat.routine.pojo.RoutineMessage">
+        insert into routine_message(work_id, user_id, user_type,messages,create_time)
+        values (#{workId,jdbcType=VARCHAR},#{userId,jdbcType=INTEGER},#{userType,jdbcType=INTEGER},#{messages,jdbcType=INTEGER},#{createTime,jdbcType=TIMESTAMP})
+    </insert>
+    <update id="UpdateBatchReadState" parameterType="java.util.List">
+
+         update routine_message set read_state = 1 where id in
+        <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+                                                         #{item.id}
+        </foreach>
+    </update>
+    <delete id="deleteByWorkId" parameterType="java.lang.String">
+        delete from routine_message where work_id = #{workId,jdbcType=VARCHAR}
+    </delete>
+    <select id="selectByIdAndType" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/>
+            from routine_message where user_id = #{id,jdbcType=INTEGER} and user_type = #{type,jdbcType=INTEGER}
+                                   <if test="readState != null">
+                                       and read_state = #{readState,jdbcType=INTEGER}
+                                   </if>
+
+        order by create_time DESC
+    </select>
+    <select id="selectByWorkIdAndUserIdAndType" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/>
+        from routine_message where user_id = #{id,jdbcType=INTEGER} and user_type = #{type,jdbcType=INTEGER} and work_id = #{workId,jdbcType=VARCHAR}
+                            and messages = #{messages,jdbcType=INTEGER}
+        order by create_time DESC
+    </select>
+
+    <delete id="deleteByWorkIdAndUserIdAndType">
+        delete from routine_message where work_id = #{workId,jdbcType=VARCHAR} and user_type = #{userType,jdbcType=INTEGER} and messages = #{messages,jdbcType=INTEGER}
+    </delete>
 </mapper>

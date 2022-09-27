@@ -22,4 +22,12 @@ public interface UserMapper {
 
     User selectByAccount(String account);
 
+    List<User> selectByDeptId(Integer deptId);
+
+    List<User> selectAllByIdUsers(List<Integer> list);
+
+    List<User> selectByAll();
+
+    User selectById(Integer id);
+
 }

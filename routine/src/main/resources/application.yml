@@ -1,16 +1,27 @@
 server:
   port: 9001
 spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  servlet:
+    multipart:
+      enabled: true
+      location: D:\tempFilePath\
+      file-size-threshold: 5MB
+      max-file-size: 20MB
   application:
     name: routine
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/guns?useUnicode=true&characterEncoding=UTF-8&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=GMT%2B8
+    url: jdbc:mysql://127.0.0.1:3306/routines?useUnicode=true&characterEncoding=UTF-8&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=Asia/Shanghai
     username: root
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
   mvc:
     path match:
       matching-strategy: ant_path_matcher
+    format:
+      date-time: yyyy-MM-dd HH:mm:ss
 eureka:
   client:
     service-url:
@@ -23,6 +34,10 @@ config:
     # 加密密钥
     secret: abcdefg1234567
     # token有效时长
-    expire: 3600
+    expire: 1000000000
     # header 名称
     header: token
+
+
+
+

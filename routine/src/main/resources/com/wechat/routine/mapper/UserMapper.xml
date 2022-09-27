@@ -19,25 +19,44 @@
     <result column="version" jdbcType="INTEGER" property="version"/>
   </resultMap>
   <sql id="Base_Column_List">
-    id, avatar, account, password, salt, name, birthday, sex, email, phone, roleid, deptid,status,createtime,version,
+    id, avatar, account, password, salt, name, birthday, sex, email, phone, roleid, deptid,status,createtime,version
   </sql>
 
-  <select id="selectByUserNameAndPassword" resultType="com.wechat.routine.pojo.User" >
+  <select id="selectByUserNameAndPassword" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
       from sys_user
       where account = #{account,jdbcType=VARCHAR} and password = #{password,jdbcType=VARCHAR}
   </select>
-  <select id="selectByAccount" resultType="com.wechat.routine.pojo.User">
+  <select id="selectByAccount" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from sys_user
     where account = #{account,jdbcType=VARCHAR}
   </select>
-  <select id="selectByRoleidUsers" resultType="com.wechat.routine.pojo.User">
+  <select id="selectByRoleidUsers" resultMap="BaseResultMap">
       select <include refid="Base_Column_List"/>
           from sys_user where roleid=1
     </select>
+    <select id="selectByDeptId" resultMap="BaseResultMap">
+      select <include refid="Base_Column_List"/>
+          from sys_user where deptid =#{deptId}
+    </select>
+  <select id="selectAllByIdUsers" resultMap="BaseResultMap" parameterType="java.lang.Long">
+    select <include refid="Base_Column_List"/>
+    from sys_user where id in 
+                  <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+                        #{item}
+                  </foreach>
+  </select>
+    <select id="selectByAll" resultType="com.wechat.routine.pojo.User">
+      select <include refid="Base_Column_List"/>
+          from sys_user
+    </select>
+  <select id="selectById" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/>
+    from sys_user where id = #{id,jdbcType=INTEGER}
+  </select>
 
 
 </mapper>

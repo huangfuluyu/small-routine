@@ -3,73 +3,16 @@
 <mapper namespace="com.wechat.routine.mapper.RoutineMaintainerMapper">
   <resultMap id="BaseResultMap" type="com.wechat.routine.pojo.RoutineMaintainer">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="leader_id" jdbcType="INTEGER" property="leaderId"/>
+    <result column="leader_ids" jdbcType="VARCHAR" property="leaderIds"/>
     <result column="maintainer_name" jdbcType="VARCHAR" property="maintainerName" />
-    <result column="maintainer_phone" jdbcType="INTEGER" property="maintainerPhone" />
+    <result column="maintainer_phone" jdbcType="BIGINT" property="maintainerPhone" />
     <result column="maintainer_account" jdbcType="VARCHAR" property="maintainerAccount" />
     <result column="maintainer_pwd" jdbcType="VARCHAR" property="maintainerPwd" />
     <result column="token" jdbcType="VARCHAR" property="token"/>
   </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
+
   <sql id="Base_Column_List">
-    id, leaderId,maintainer_name, maintainer_phone, maintainer_account, maintainer_pwd,token
+    id, leader_ids ,maintainer_name, maintainer_phone, maintainer_account, maintainer_pwd,token
   </sql>
 
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -84,65 +27,10 @@
   </delete>
   <insert id="insert" parameterType="com.wechat.routine.pojo.RoutineMaintainer">
     insert into routine_maintainer (id, maintainer_name, maintainer_phone, 
-      maintainer_account, maintainer_pwd)
-    values (#{id,jdbcType=INTEGER}, #{maintainerName,jdbcType=VARCHAR}, #{maintainerPhone,jdbcType=INTEGER}, 
-      #{maintainerAccount,jdbcType=VARCHAR}, #{maintainerPwd,jdbcType=VARCHAR})
+      maintainer_account, maintainer_pwd,token)
+    values (#{id,jdbcType=INTEGER}, #{maintainerName,jdbcType=VARCHAR}, #{maintainerPhone,jdbcType=BIGINT},
+      #{maintainerAccount,jdbcType=VARCHAR}, #{maintainerPwd,jdbcType=VARCHAR},#{token,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.wechat.routine.pojo.RoutineMaintainer">
-    insert into routine_maintainer
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="maintainerName != null">
-        maintainer_name,
-      </if>
-      <if test="maintainerPhone != null">
-        maintainer_phone,
-      </if>
-      <if test="maintainerAccount != null">
-        maintainer_account,
-      </if>
-      <if test="maintainerPwd != null">
-        maintainer_pwd,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="maintainerName != null">
-        #{maintainerName,jdbcType=VARCHAR},
-      </if>
-      <if test="maintainerPhone != null">
-        #{maintainerPhone,jdbcType=INTEGER},
-      </if>
-      <if test="maintainerAccount != null">
-        #{maintainerAccount,jdbcType=VARCHAR},
-      </if>
-      <if test="maintainerPwd != null">
-        #{maintainerPwd,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.wechat.routine.pojo.RoutineMaintainer">
-    update routine_maintainer
-    <set>
-      <if test="maintainerName != null">
-        maintainer_name = #{maintainerName,jdbcType=VARCHAR},
-      </if>
-      <if test="maintainerPhone != null">
-        maintainer_phone = #{maintainerPhone,jdbcType=INTEGER},
-      </if>
-      <if test="maintainerAccount != null">
-        maintainer_account = #{maintainerAccount,jdbcType=VARCHAR},
-      </if>
-      <if test="maintainerPwd != null">
-        maintainer_pwd = #{maintainerPwd,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
   <update id="updateByPrimaryKey" parameterType="com.wechat.routine.pojo.RoutineMaintainer">
     update routine_maintainer
     set maintainer_name = #{maintainerName,jdbcType=VARCHAR},
@@ -151,7 +39,7 @@
       maintainer_pwd = #{maintainerPwd,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectAll" resultType="com.wechat.routine.pojo.RoutineMaintainer">
+  <select id="selectAll" resultMap="BaseResultMap">
     select <include refid="Base_Column_List" />
         from routine_maintainer
   </select>

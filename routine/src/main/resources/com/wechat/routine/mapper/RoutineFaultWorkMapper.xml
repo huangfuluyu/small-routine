@@ -3,10 +3,11 @@
 <mapper namespace="com.wechat.routine.mapper.RoutineFaultWorkMapper">
   <resultMap id="BaseResultMap" type="com.wechat.routine.pojo.RoutineFaultWork">
     <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="work_id" jdbcType="VARCHAR" property="workId"/>
     <result column="user_unit" jdbcType="VARCHAR" property="userUnit" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
     <result column="user_gender" jdbcType="INTEGER" property="userGender" />
-    <result column="user_phone" jdbcType="INTEGER" property="userPhone" />
+    <result column="user_phone" jdbcType="BIGINT" property="userPhone" />
     <result column="fault_info" jdbcType="VARCHAR" property="faultInfo" />
     <result column="fault_img" jdbcType="VARCHAR" property="faultImg" />
     <result column="work_time" jdbcType="TIMESTAMP" property="workTime" />
@@ -14,21 +15,24 @@
     <result column="fault_detail_address" jdbcType="VARCHAR" property="faultDetailAddress" />
     <result column="question_info" jdbcType="VARCHAR" property="questionInfo"/>
     <result column="solve_img" jdbcType="VARCHAR" property="solveImg" />
-    <result column="maintainer" jdbcType="VARCHAR" property="maintainer" />
-    <result column="maintainer_phone" jdbcType="INTEGER" property="maintainerPhone" />
+      <result column="old_maintainer_id" jdbcType="INTEGER" property="oldMaintainerId"/>
+    <result column="maintainer_id" jdbcType="INTEGER" property="maintainerId" />
     <result column="remarks" jdbcType="VARCHAR" property="remarks" />
     <result column="door" jdbcType="VARCHAR" property="door" />
     <result column="punch" jdbcType="VARCHAR" property="punch" />
     <result column="work_deal_with_status" jdbcType="INTEGER" property="workDealWithStatus" />
     <result column="work_state" jdbcType="INTEGER" property="workState" />
+    <result column="work_score" jdbcType="INTEGER" property="workScore"/>
+    <result column="work_confirm" jdbcType="INTEGER" property="workConfirm"/>
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="dispatch_time" jdbcType="TIMESTAMP" property="dispatchTime" />
+      <result column="admin_id" jdbcType="INTEGER" property="adminId"/>
   </resultMap>
 
   <sql id="Base_Column_List">
-    id, user_unit,user_name,user_gender,user_phone, fault_info, fault_img, work_time, fault_address, fault_detail_address, question_info,
-    solve_img, maintainer, remarks, door, punch, work_deal_with_status, work_state, create_time, 
-    modify_time
+    id, work_id, user_unit,user_name,user_gender,user_phone, fault_info, fault_img, work_time, fault_address, fault_detail_address, question_info,
+    solve_img, old_maintainer_id, maintainer_id, remarks, door, punch, work_deal_with_status, work_state, work_score, work_confirm, create_time, modify_time,dispatch_time,admin_id
   </sql>
 
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -37,211 +41,140 @@
     from routine_fault_work
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from routine_fault_work
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
+
   <insert id="insert" parameterType="com.wechat.routine.pojo.RoutineFaultWork">
-    insert into routine_fault_work (id, user_id, fault_info, 
-      fault_img, work_time, fault_address, 
-      fault_detail_address, solve_img, maintainer, 
-      remarks, door, punch, 
-      work_deal_with_status, work_state, create_time, 
-      modify_time)
-    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{faultInfo,jdbcType=VARCHAR}, 
-      #{faultImg,jdbcType=VARCHAR}, #{workTime,jdbcType=TIMESTAMP}, #{faultAddress,jdbcType=VARCHAR}, 
-      #{faultDetailAddress,jdbcType=VARCHAR}, #{solveImg,jdbcType=VARCHAR}, #{maintainer,jdbcType=VARCHAR}, 
-      #{remarks,jdbcType=VARCHAR}, #{door,jdbcType=VARCHAR}, #{punch,jdbcType=VARCHAR}, 
-      #{workDealWithStatus,jdbcType=INTEGER}, #{workState,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{modifyTime,jdbcType=TIMESTAMP})
+    insert into routine_fault_work (work_id, user_unit,user_name,user_gender,user_phone, fault_info, fault_img, work_time, fault_address, fault_detail_address, question_info,
+    solve_img, maintainer_id, remarks, door, punch )
+    values (#{workId,jdbcType=VARCHAR},#{userUnit,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR},#{userGender,jdbcType=VARCHAR},#{userPhone,jdbcType=BIGINT},#{faultInfo,jdbcType=VARCHAR},
+      #{faultImg,jdbcType=VARCHAR}, #{workTime,jdbcType=TIMESTAMP}, #{faultAddress,jdbcType=VARCHAR},
+      #{faultDetailAddress,jdbcType=VARCHAR},#{questionInfo,jdbcType=VARCHAR}, #{solveImg,jdbcType=VARCHAR}, #{maintainerId,jdbcType=INTEGER},
+      #{remarks,jdbcType=VARCHAR}, #{door,jdbcType=VARCHAR}, #{punch,jdbcType=VARCHAR})
     <selectKey resultType="java.lang.Long" keyProperty="id">
         SELECT LAST_INSERT_ID() AS id
     </selectKey>
   </insert>
-  <insert id="insertSelective" parameterType="com.wechat.routine.pojo.RoutineFaultWork">
-    insert into routine_fault_work
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="userId != null">
-        user_id,
-      </if>
-      <if test="faultInfo != null">
-        fault_info,
-      </if>
-      <if test="faultImg != null">
-        fault_img,
-      </if>
-      <if test="workTime != null">
-        work_time,
-      </if>
-      <if test="faultAddress != null">
-        fault_address,
-      </if>
-      <if test="faultDetailAddress != null">
-        fault_detail_address,
-      </if>
-      <if test="solveImg != null">
-        solve_img,
-      </if>
-      <if test="maintainer != null">
-        maintainer,
-      </if>
-      <if test="remarks != null">
-        remarks,
-      </if>
-      <if test="door != null">
-        door,
-      </if>
-      <if test="punch != null">
-        punch,
-      </if>
-      <if test="workDealWithStatus != null">
-        work_deal_with_status,
-      </if>
-      <if test="workState != null">
-        work_state,
-      </if>
-      <if test="createTime != null">
-        create_time,
-      </if>
-      <if test="modifyTime != null">
-        modify_time,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="userId != null">
-        #{userId,jdbcType=INTEGER},
-      </if>
-      <if test="faultInfo != null">
-        #{faultInfo,jdbcType=VARCHAR},
-      </if>
-      <if test="faultImg != null">
-        #{faultImg,jdbcType=VARCHAR},
-      </if>
-      <if test="workTime != null">
-        #{workTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="faultAddress != null">
-        #{faultAddress,jdbcType=VARCHAR},
-      </if>
-      <if test="faultDetailAddress != null">
-        #{faultDetailAddress,jdbcType=VARCHAR},
-      </if>
-      <if test="solveImg != null">
-        #{solveImg,jdbcType=VARCHAR},
-      </if>
-      <if test="maintainer != null">
-        #{maintainer,jdbcType=VARCHAR},
-      </if>
-      <if test="remarks != null">
-        #{remarks,jdbcType=VARCHAR},
-      </if>
-      <if test="door != null">
-        #{door,jdbcType=VARCHAR},
-      </if>
-      <if test="punch != null">
-        #{punch,jdbcType=VARCHAR},
-      </if>
-      <if test="workDealWithStatus != null">
-        #{workDealWithStatus,jdbcType=INTEGER},
-      </if>
-      <if test="workState != null">
-        #{workState,jdbcType=INTEGER},
-      </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="modifyTime != null">
-        #{modifyTime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.wechat.routine.pojo.RoutineFaultWork">
-    update routine_fault_work
-    <set>
-      <if test="userId != null">
-        user_id = #{userId,jdbcType=INTEGER},
-      </if>
-      <if test="faultInfo != null">
-        fault_info = #{faultInfo,jdbcType=VARCHAR},
-      </if>
-      <if test="faultImg != null">
-        fault_img = #{faultImg,jdbcType=VARCHAR},
-      </if>
-      <if test="workTime != null">
-        work_time = #{workTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="faultAddress != null">
-        fault_address = #{faultAddress,jdbcType=VARCHAR},
-      </if>
-      <if test="faultDetailAddress != null">
-        fault_detail_address = #{faultDetailAddress,jdbcType=VARCHAR},
-      </if>
-      <if test="solveImg != null">
-        solve_img = #{solveImg,jdbcType=VARCHAR},
-      </if>
-      <if test="maintainer != null">
-        maintainer = #{maintainer,jdbcType=VARCHAR},
-      </if>
-      <if test="remarks != null">
-        remarks = #{remarks,jdbcType=VARCHAR},
-      </if>
-      <if test="door != null">
-        door = #{door,jdbcType=VARCHAR},
-      </if>
-      <if test="punch != null">
-        punch = #{punch,jdbcType=VARCHAR},
-      </if>
-      <if test="workDealWithStatus != null">
-        work_deal_with_status = #{workDealWithStatus,jdbcType=INTEGER},
-      </if>
-      <if test="workState != null">
-        work_state = #{workState,jdbcType=INTEGER},
-      </if>
-      <if test="createTime != null">
-        create_time = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="modifyTime != null">
-        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+
   <update id="updateByPrimaryKey" parameterType="com.wechat.routine.pojo.RoutineFaultWork">
     update routine_fault_work
-    set user_id = #{userId,jdbcType=INTEGER},
+    set user_unit = #{userUnit,jdbcType=VARCHAR},
+        user_name = #{userName,jdbcType=VARCHAR},
+        user_gender = #{userGender,jdbcType=VARCHAR},
+        user_phone = #{userPhone,jdbcType=BIGINT},
       fault_info = #{faultInfo,jdbcType=VARCHAR},
       fault_img = #{faultImg,jdbcType=VARCHAR},
       work_time = #{workTime,jdbcType=TIMESTAMP},
       fault_address = #{faultAddress,jdbcType=VARCHAR},
       fault_detail_address = #{faultDetailAddress,jdbcType=VARCHAR},
-      solve_img = #{solveImg,jdbcType=VARCHAR},
-      maintainer = #{maintainer,jdbcType=VARCHAR},
-      remarks = #{remarks,jdbcType=VARCHAR},
-      door = #{door,jdbcType=VARCHAR},
-      punch = #{punch,jdbcType=VARCHAR},
-      work_deal_with_status = #{workDealWithStatus,jdbcType=INTEGER},
-      work_state = #{workState,jdbcType=INTEGER},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+      remarks = #{remarks,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectByUserPhone" parameterType="java.lang.Integer" resultType="com.wechat.routine.pojo.RoutineFaultWork">
-    select
-    <include refid="Base_Column_List" />
+  <update id="updateWorkSateByPrimaryKey" parameterType="com.wechat.routine.pojo.RoutineFaultWork">
+    update routine_fault_work
+    set user_unit = #{userUnit,jdbcType=VARCHAR},
+        user_name = #{userName,jdbcType=VARCHAR},
+        user_gender = #{userGender,jdbcType=VARCHAR},
+        user_phone = #{userPhone,jdbcType=BIGINT},
+        fault_info = #{faultInfo,jdbcType=VARCHAR},
+        fault_img = #{faultImg,jdbcType=VARCHAR},
+        work_time = #{workTime,jdbcType=TIMESTAMP},
+        fault_address = #{faultAddress,jdbcType=VARCHAR},
+        fault_detail_address = #{faultDetailAddress,jdbcType=VARCHAR},
+        remarks = #{remarks,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateConFirmWork" parameterType="com.wechat.routine.pojo.RoutineFaultWork">
+    update routine_fault_work set work_confirm = 1 where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateById" parameterType="com.wechat.routine.pojo.RoutineFaultWork">
+    update routine_fault_work set
+                                user_unit = #{userUnit,jdbcType=VARCHAR},
+                                user_name = #{userName,jdbcType=VARCHAR},
+                                user_gender = #{userGender,jdbcType=VARCHAR},
+                                user_phone = #{userPhone,jdbcType=BIGINT},
+                                fault_info = #{faultInfo,jdbcType=VARCHAR},
+                                fault_img = #{faultImg,jdbcType=VARCHAR},
+                                work_time = #{workTime,jdbcType=TIMESTAMP},
+                                fault_address = #{faultAddress,jdbcType=VARCHAR},
+                                fault_detail_address = #{faultDetailAddress,jdbcType=VARCHAR},
+                                remarks = #{remarks,jdbcType=VARCHAR},
+                                question_info= #{questionInfo,jdbcType=VARCHAR},
+                                solve_img= #{solveImg,jdbcType=VARCHAR},
+                                old_maintainer_id = #{oldMaintainerId,jdbcType=INTEGER},
+                                maintainer_id= #{maintainerId,jdbcType=INTEGER},
+                                remarks= #{remarks,jdbcType=VARCHAR},
+                                door= #{door,jdbcType=INTEGER},
+                                punch= #{punch,jdbcType=VARCHAR},
+                                work_confirm = #{workConfirm,jdbcType=INTEGER},
+                                work_deal_with_status= #{workDealWithStatus,jdbcType=INTEGER},
+                                work_state= #{workState,jdbcType=INTEGER},
+                                work_score= #{workScore,jdbcType=INTEGER}
+                                where id = #{id,jdbcType=INTEGER}
+  </update>
+    <update id="updateByPunch" parameterType="com.wechat.routine.pojo.RoutineFaultWork">
+        update routine_fault_work set
+                                      punch= #{punch,jdbcType=VARCHAR},
+                                      work_confirm = #{workConfirm,jdbcType=INTEGER}
+                                      where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateByScoreState" parameterType="java.lang.String">
+        update routine_fault_work set work_score= 1
+        where work_id = #{workId,jdbcType=VARCHAR}
+    </update>
+
+    <select id="selectByUserPhone" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
     from routine_fault_work
-    where user_phone = #{userPhone,jdbcType=INTEGER}
-    limit 1;
+    where user_phone = #{userPhone,jdbcType=BIGINT}
+    order by create_time Desc LIMIT  1
   </select>
-  <select id="selectAllByWorkState" resultType="com.wechat.routine.pojo.RoutineFaultWork" parameterType="java.lang.Integer">
+  <select id="selectAllByWorkStateAndId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
       select
       <include refid="Base_Column_List" />
       from routine_fault_work
-      where work_state = #{workState,javaType=INTEGER}
+      where work_state = #{workState,javaType=INTEGER} and maintainer_id = #{id,jdbcType=INTEGER}
+        order by create_time Desc
+    </select>
+  <select id="selectByWorkId" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select
+    <include refid="Base_Column_List" />
+    from routine_fault_work
+    where 1=1
+    <if test="workId!=null">
+        and work_id = #{workId,jdbcType=VARCHAR}
+    </if>
+  </select>
+  <select id="selectCount" resultType="java.lang.Integer">
+    select count(*)  from routine_fault_work
+  </select>
+  <select id="selectAllByWorkConfirmAndId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    select
+    <include refid="Base_Column_List" />
+    from routine_fault_work
+
+    <if test="workConfirm!=null">
+        where work_confirm = #{workConfirm,jdbcType=INTEGER}
+    </if>
+    <if test="id!=null">
+      and maintainer_id = #{id,jdbcType=INTEGER}
+    </if>
+    order by create_time DESC
+  </select>
+    <select id="selectAllByWorkStateAndOldId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List" />
+        from routine_fault_work
+        <if test="id!=null">
+            where old_maintainer_id = #{id,jdbcType=INTEGER}
+        </if>
+        order by create_time DESC
+    </select>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+            <include refid="Base_Column_List"/>
+            from routine_fault_work
+        where maintainer_id!="" and work_confirm = 0
+        order by create_time DESC
     </select>
 </mapper>
