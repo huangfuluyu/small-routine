@@ -1,0 +1,646 @@
+2023-06-13 10:28:57.898  INFO 23692 --- [restartedMain] com.wechat.routine.RoutineApplication    : Starting RoutineApplication using Java 1.8.0_333 on DESKTOP-8P780U0 with PID 23692 (C:\Users\huangfuluyu\IdeaProjects\small-routine\routine\target\classes started by huangfuluyu in C:\Users\huangfuluyu\IdeaProjects\small-routine)
+2023-06-13 10:28:57.901  INFO 23692 --- [restartedMain] com.wechat.routine.RoutineApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-06-13 10:28:57.953  INFO 23692 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-06-13 10:28:57.954  INFO 23692 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-06-13 10:28:59.161  INFO 23692 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=01833c9e-6387-3684-8006-a9f62dc95c35
+2023-06-13 10:28:59.815  INFO 23692 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9001 (http)
+2023-06-13 10:28:59.825  INFO 23692 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-06-13 10:28:59.826  INFO 23692 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2023-06-13 10:28:59.955  INFO 23692 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-06-13 10:28:59.955  INFO 23692 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2000 ms
+2023-06-13 10:29:00.728  INFO 23692 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2023-06-13 10:29:00.848  WARN 23692 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2023-06-13 10:29:01.356  INFO 23692 --- [restartedMain] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2023-06-13 10:29:01.665  WARN 23692 --- [restartedMain] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2023-06-13 10:29:01.740  INFO 23692 --- [restartedMain] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2023-06-13 10:29:01.773  INFO 23692 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2023-06-13 10:29:01.778  INFO 23692 --- [restartedMain] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-06-13 10:29:01.796  INFO 23692 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2023-06-13 10:29:01.797  INFO 23692 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2023-06-13 10:29:01.797  INFO 23692 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2023-06-13 10:29:01.797  INFO 23692 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2023-06-13 10:29:01.797  INFO 23692 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2023-06-13 10:29:01.797  INFO 23692 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2023-06-13 10:29:01.797  INFO 23692 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2023-06-13 10:29:02.530  INFO 23692 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2023-06-13 10:29:02.532  INFO 23692 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2023-06-13 10:29:02.534  INFO 23692 --- [restartedMain] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2023-06-13 10:29:02.539  INFO 23692 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1686623342538 with initial instances count: 0
+2023-06-13 10:29:02.541  INFO 23692 --- [restartedMain] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application ROUTINE with eureka with status UP
+2023-06-13 10:29:02.542  INFO 23692 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1686623342542, current=UP, previous=STARTING]
+2023-06-13 10:29:02.543  INFO 23692 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001: registering service...
+2023-06-13 10:29:02.569  INFO 23692 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9001 (http) with context path ''
+2023-06-13 10:29:02.570  INFO 23692 --- [restartedMain] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 9001
+2023-06-13 10:29:02.668  INFO 23692 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001 - registration status: 204
+2023-06-13 10:29:02.807  INFO 23692 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2023-06-13 10:29:02.821  INFO 23692 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2023-06-13 10:29:02.854  INFO 23692 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2023-06-13 10:29:02.999  INFO 23692 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getLeadersUsingGET_1
+2023-06-13 10:29:03.071  INFO 23692 --- [restartedMain] com.wechat.routine.RoutineApplication    : Started RoutineApplication in 6.019 seconds (JVM running for 6.974)
+2023-06-13 10:29:20.033  INFO 23692 --- [scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-06-13 10:29:20.148  INFO 23692 --- [scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-06-13 10:29:32.534  INFO 23692 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2023-06-13 10:29:32.535  INFO 23692 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2023-06-13 10:29:32.535  INFO 23692 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2023-06-13 10:29:32.535  INFO 23692 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2023-06-13 10:29:32.535  INFO 23692 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2023-06-13 10:29:32.535  INFO 23692 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+2023-06-13 10:29:32.535  INFO 23692 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2023-06-13 10:29:32.558  INFO 23692 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2023-06-13 10:30:35.872  INFO 23692 --- [http-nio-9001-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-13 10:30:35.872  INFO 23692 --- [http-nio-9001-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-06-13 10:30:35.873  INFO 23692 --- [http-nio-9001-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-06-13 10:30:35.934  WARN 23692 --- [http-nio-9001-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.security.SignatureException: token不能为空]
+2023-06-13 10:30:48.581  WARN 23692 --- [http-nio-9001-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.security.SignatureException: token不能为空]
+2023-06-13 10:32:00.473  INFO 23692 --- [SpringApplicationShutdownHook] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application ROUTINE with eureka with status DOWN
+2023-06-13 10:32:00.473  INFO 23692 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1686623520473, current=DOWN, previous=UP]
+2023-06-13 10:32:00.473  INFO 23692 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001: registering service...
+2023-06-13 10:32:00.485  INFO 23692 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001 - registration status: 204
+2023-06-13 10:32:00.646  INFO 23692 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-06-13 10:32:00.655  INFO 23692 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-06-13 10:32:00.655  INFO 23692 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2023-06-13 10:32:03.668  WARN 23692 --- [DiscoveryClient-1] c.netflix.discovery.TimedSupervisorTask  : task supervisor shutting down, can't accept the task
+2023-06-13 10:32:03.670  INFO 23692 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2023-06-13 10:32:03.675  INFO 23692 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001 - deregister  status: 200
+2023-06-13 10:32:03.679  INFO 23692 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2023-06-13 10:32:09.548  INFO 2752 --- [restartedMain] com.wechat.routine.RoutineApplication    : Starting RoutineApplication using Java 1.8.0_333 on DESKTOP-8P780U0 with PID 2752 (C:\Users\huangfuluyu\IdeaProjects\small-routine\routine\target\classes started by huangfuluyu in C:\Users\huangfuluyu\IdeaProjects\small-routine)
+2023-06-13 10:32:09.550  INFO 2752 --- [restartedMain] com.wechat.routine.RoutineApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-06-13 10:32:09.607  INFO 2752 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-06-13 10:32:09.607  INFO 2752 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-06-13 10:32:10.830  INFO 2752 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=01833c9e-6387-3684-8006-a9f62dc95c35
+2023-06-13 10:32:11.479  INFO 2752 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9001 (http)
+2023-06-13 10:32:11.491  INFO 2752 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-06-13 10:32:11.491  INFO 2752 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2023-06-13 10:32:11.610  INFO 2752 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-06-13 10:32:11.611  INFO 2752 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2003 ms
+2023-06-13 10:32:12.374  INFO 2752 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2023-06-13 10:32:12.492  WARN 2752 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2023-06-13 10:32:12.998  INFO 2752 --- [restartedMain] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2023-06-13 10:32:13.312  WARN 2752 --- [restartedMain] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2023-06-13 10:32:13.389  INFO 2752 --- [restartedMain] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2023-06-13 10:32:13.416  INFO 2752 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2023-06-13 10:32:13.422  INFO 2752 --- [restartedMain] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-06-13 10:32:13.440  INFO 2752 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2023-06-13 10:32:13.441  INFO 2752 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2023-06-13 10:32:13.441  INFO 2752 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2023-06-13 10:32:13.441  INFO 2752 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2023-06-13 10:32:13.441  INFO 2752 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2023-06-13 10:32:13.441  INFO 2752 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2023-06-13 10:32:13.441  INFO 2752 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2023-06-13 10:32:13.993  INFO 2752 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2023-06-13 10:32:13.996  INFO 2752 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2023-06-13 10:32:13.999  INFO 2752 --- [restartedMain] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2023-06-13 10:32:14.004  INFO 2752 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1686623534003 with initial instances count: 1
+2023-06-13 10:32:14.006  INFO 2752 --- [restartedMain] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application ROUTINE with eureka with status UP
+2023-06-13 10:32:14.006  INFO 2752 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1686623534006, current=UP, previous=STARTING]
+2023-06-13 10:32:14.008  INFO 2752 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001: registering service...
+2023-06-13 10:32:14.031  INFO 2752 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9001 (http) with context path ''
+2023-06-13 10:32:14.032  INFO 2752 --- [restartedMain] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 9001
+2023-06-13 10:32:14.054  INFO 2752 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001 - registration status: 204
+2023-06-13 10:32:14.264  INFO 2752 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2023-06-13 10:32:14.285  INFO 2752 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2023-06-13 10:32:14.319  INFO 2752 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2023-06-13 10:32:14.466  INFO 2752 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getLeadersUsingGET_1
+2023-06-13 10:32:14.536  INFO 2752 --- [restartedMain] com.wechat.routine.RoutineApplication    : Started RoutineApplication in 5.814 seconds (JVM running for 6.809)
+2023-06-13 10:32:18.743  INFO 2752 --- [http-nio-9001-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-13 10:32:18.743  INFO 2752 --- [http-nio-9001-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-06-13 10:32:18.745  INFO 2752 --- [http-nio-9001-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2023-06-13 10:32:20.020  INFO 2752 --- [scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-06-13 10:32:20.135  INFO 2752 --- [scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-06-13 10:32:34.961  WARN 2752 --- [http-nio-9001-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.security.SignatureException: token不能为空]
+2023-06-13 10:32:35.079  WARN 2752 --- [http-nio-9001-exec-10] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.security.SignatureException: token不能为空]
+2023-06-13 10:32:42.655  INFO 2752 --- [SpringApplicationShutdownHook] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application ROUTINE with eureka with status DOWN
+2023-06-13 10:32:42.655  INFO 2752 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1686623562655, current=DOWN, previous=UP]
+2023-06-13 10:32:42.656  INFO 2752 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001: registering service...
+2023-06-13 10:32:42.666  INFO 2752 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001 - registration status: 204
+2023-06-13 10:32:42.825  INFO 2752 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-06-13 10:32:42.841  INFO 2752 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-06-13 10:32:42.841  INFO 2752 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2023-06-13 10:32:45.853  WARN 2752 --- [DiscoveryClient-0] c.netflix.discovery.TimedSupervisorTask  : task supervisor shutting down, can't accept the task
+2023-06-13 10:32:45.854  INFO 2752 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2023-06-13 10:32:45.859  INFO 2752 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001 - deregister  status: 200
+2023-06-13 10:32:45.865  INFO 2752 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2023-06-13 10:35:12.730  INFO 2440 --- [restartedMain] com.wechat.routine.RoutineApplication    : Starting RoutineApplication using Java 1.8.0_333 on DESKTOP-8P780U0 with PID 2440 (C:\Users\huangfuluyu\IdeaProjects\small-routine\routine\target\classes started by huangfuluyu in C:\Users\huangfuluyu\IdeaProjects\small-routine)
+2023-06-13 10:35:12.731  INFO 2440 --- [restartedMain] com.wechat.routine.RoutineApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-06-13 10:35:12.784  INFO 2440 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-06-13 10:35:12.784  INFO 2440 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-06-13 10:35:13.951  INFO 2440 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=01833c9e-6387-3684-8006-a9f62dc95c35
+2023-06-13 10:35:14.579  INFO 2440 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9001 (http)
+2023-06-13 10:35:14.588  INFO 2440 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-06-13 10:35:14.588  INFO 2440 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2023-06-13 10:35:14.701  INFO 2440 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-06-13 10:35:14.701  INFO 2440 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1916 ms
+2023-06-13 10:35:15.401  INFO 2440 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2023-06-13 10:35:15.513  WARN 2440 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2023-06-13 10:35:16.010  INFO 2440 --- [restartedMain] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2023-06-13 10:35:16.323  WARN 2440 --- [restartedMain] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2023-06-13 10:35:16.391  INFO 2440 --- [restartedMain] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2023-06-13 10:35:16.423  INFO 2440 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2023-06-13 10:35:16.428  INFO 2440 --- [restartedMain] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-06-13 10:35:16.445  INFO 2440 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2023-06-13 10:35:16.446  INFO 2440 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2023-06-13 10:35:16.446  INFO 2440 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2023-06-13 10:35:16.446  INFO 2440 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2023-06-13 10:35:16.446  INFO 2440 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2023-06-13 10:35:16.446  INFO 2440 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2023-06-13 10:35:16.446  INFO 2440 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2023-06-13 10:35:17.039  INFO 2440 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2023-06-13 10:35:17.041  INFO 2440 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2023-06-13 10:35:17.043  INFO 2440 --- [restartedMain] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2023-06-13 10:35:17.048  INFO 2440 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1686623717047 with initial instances count: 0
+2023-06-13 10:35:17.050  INFO 2440 --- [restartedMain] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application ROUTINE with eureka with status UP
+2023-06-13 10:35:17.050  INFO 2440 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1686623717050, current=UP, previous=STARTING]
+2023-06-13 10:35:17.052  INFO 2440 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001: registering service...
+2023-06-13 10:35:17.078  INFO 2440 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9001 (http) with context path ''
+2023-06-13 10:35:17.079  INFO 2440 --- [restartedMain] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 9001
+2023-06-13 10:35:17.100  INFO 2440 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001 - registration status: 204
+2023-06-13 10:35:17.308  INFO 2440 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2023-06-13 10:35:17.321  INFO 2440 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2023-06-13 10:35:17.351  INFO 2440 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2023-06-13 10:35:17.491  INFO 2440 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getLeadersUsingGET_1
+2023-06-13 10:35:17.560  INFO 2440 --- [restartedMain] com.wechat.routine.RoutineApplication    : Started RoutineApplication in 5.656 seconds (JVM running for 6.599)
+2023-06-13 10:35:20.028  INFO 2440 --- [scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-06-13 10:35:20.126  INFO 2440 --- [scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-06-13 10:35:27.986  INFO 2440 --- [http-nio-9001-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-13 10:35:27.986  INFO 2440 --- [http-nio-9001-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-06-13 10:35:27.987  INFO 2440 --- [http-nio-9001-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-06-13 10:35:28.038  WARN 2440 --- [http-nio-9001-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.security.SignatureException: token不能为空]
+2023-06-13 10:35:29.383  WARN 2440 --- [http-nio-9001-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.security.SignatureException: token不能为空]
+2023-06-13 10:35:47.055  INFO 2440 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2023-06-13 10:35:47.055  INFO 2440 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2023-06-13 10:35:47.056  INFO 2440 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2023-06-13 10:35:47.056  INFO 2440 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2023-06-13 10:35:47.056  INFO 2440 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2023-06-13 10:35:47.056  INFO 2440 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+2023-06-13 10:35:47.056  INFO 2440 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2023-06-13 10:35:47.078  INFO 2440 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2023-06-13 10:39:25.035  INFO 2440 --- [SpringApplicationShutdownHook] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application ROUTINE with eureka with status DOWN
+2023-06-13 10:39:25.036  INFO 2440 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1686623965036, current=DOWN, previous=UP]
+2023-06-13 10:39:25.036  INFO 2440 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001: registering service...
+2023-06-13 10:39:25.050  INFO 2440 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001 - registration status: 204
+2023-06-13 10:39:25.216  INFO 2440 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-06-13 10:39:25.225  INFO 2440 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-06-13 10:39:25.226  INFO 2440 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2023-06-13 10:39:28.238  INFO 2440 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2023-06-13 10:39:28.255  INFO 2440 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001 - deregister  status: 200
+2023-06-13 10:39:28.261  INFO 2440 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2023-06-13 10:39:35.051  INFO 9692 --- [restartedMain] com.wechat.routine.RoutineApplication    : Starting RoutineApplication using Java 1.8.0_333 on DESKTOP-8P780U0 with PID 9692 (C:\Users\huangfuluyu\IdeaProjects\small-routine\routine\target\classes started by huangfuluyu in C:\Users\huangfuluyu\IdeaProjects\small-routine)
+2023-06-13 10:39:35.052  INFO 9692 --- [restartedMain] com.wechat.routine.RoutineApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-06-13 10:39:35.107  INFO 9692 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-06-13 10:39:35.108  INFO 9692 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-06-13 10:39:36.286  INFO 9692 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=b560f9bb-55e2-3b3c-94eb-68be8388c9bd
+2023-06-13 10:39:36.990  INFO 9692 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9001 (http)
+2023-06-13 10:39:36.998  INFO 9692 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-06-13 10:39:36.999  INFO 9692 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2023-06-13 10:39:37.126  INFO 9692 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-06-13 10:39:37.126  INFO 9692 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2018 ms
+2023-06-13 10:39:37.840  INFO 9692 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2023-06-13 10:39:37.960  WARN 9692 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2023-06-13 10:39:38.453  INFO 9692 --- [restartedMain] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2023-06-13 10:39:38.765  WARN 9692 --- [restartedMain] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2023-06-13 10:39:38.840  INFO 9692 --- [restartedMain] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2023-06-13 10:39:38.865  INFO 9692 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2023-06-13 10:39:38.870  INFO 9692 --- [restartedMain] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-06-13 10:39:38.887  INFO 9692 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2023-06-13 10:39:38.887  INFO 9692 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2023-06-13 10:39:38.888  INFO 9692 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2023-06-13 10:39:38.888  INFO 9692 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2023-06-13 10:39:38.888  INFO 9692 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2023-06-13 10:39:38.888  INFO 9692 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2023-06-13 10:39:38.888  INFO 9692 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2023-06-13 10:39:39.427  INFO 9692 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2023-06-13 10:39:39.429  INFO 9692 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2023-06-13 10:39:39.431  INFO 9692 --- [restartedMain] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2023-06-13 10:39:39.436  INFO 9692 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1686623979435 with initial instances count: 0
+2023-06-13 10:39:39.438  INFO 9692 --- [restartedMain] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application ROUTINE with eureka with status UP
+2023-06-13 10:39:39.438  INFO 9692 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1686623979438, current=UP, previous=STARTING]
+2023-06-13 10:39:39.440  INFO 9692 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001: registering service...
+2023-06-13 10:39:39.460  INFO 9692 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9001 (http) with context path ''
+2023-06-13 10:39:39.461  INFO 9692 --- [restartedMain] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 9001
+2023-06-13 10:39:39.485  INFO 9692 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001 - registration status: 204
+2023-06-13 10:39:39.695  INFO 9692 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2023-06-13 10:39:39.713  INFO 9692 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2023-06-13 10:39:39.740  INFO 9692 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2023-06-13 10:39:39.852  INFO 9692 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getLeadersUsingGET_1
+2023-06-13 10:39:39.928  INFO 9692 --- [restartedMain] com.wechat.routine.RoutineApplication    : Started RoutineApplication in 5.695 seconds (JVM running for 6.582)
+2023-06-13 10:39:40.022  INFO 9692 --- [scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-06-13 10:39:40.200  INFO 9692 --- [scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-06-13 10:39:44.146  INFO 9692 --- [http-nio-9001-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-13 10:39:44.147  INFO 9692 --- [http-nio-9001-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-06-13 10:39:44.148  INFO 9692 --- [http-nio-9001-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-06-13 10:40:09.444  INFO 9692 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2023-06-13 10:40:09.445  INFO 9692 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2023-06-13 10:40:09.445  INFO 9692 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2023-06-13 10:40:09.445  INFO 9692 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2023-06-13 10:40:09.445  INFO 9692 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2023-06-13 10:40:09.445  INFO 9692 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+2023-06-13 10:40:09.445  INFO 9692 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2023-06-13 10:40:09.471  INFO 9692 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2023-06-13 10:41:21.812  INFO 9692 --- [SpringApplicationShutdownHook] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application ROUTINE with eureka with status DOWN
+2023-06-13 10:41:21.813  INFO 9692 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1686624081813, current=DOWN, previous=UP]
+2023-06-13 10:41:21.813  INFO 9692 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001: registering service...
+2023-06-13 10:41:21.826  INFO 9692 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001 - registration status: 204
+2023-06-13 10:41:21.982  INFO 9692 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-06-13 10:41:21.990  INFO 9692 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-06-13 10:41:21.990  INFO 9692 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2023-06-13 10:41:25.001  INFO 9692 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2023-06-13 10:41:25.018  INFO 9692 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001 - deregister  status: 200
+2023-06-13 10:41:25.022  INFO 9692 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2023-06-13 10:41:29.388  INFO 20996 --- [restartedMain] com.wechat.routine.RoutineApplication    : Starting RoutineApplication using Java 1.8.0_333 on DESKTOP-8P780U0 with PID 20996 (C:\Users\huangfuluyu\IdeaProjects\small-routine\routine\target\classes started by huangfuluyu in C:\Users\huangfuluyu\IdeaProjects\small-routine)
+2023-06-13 10:41:29.390  INFO 20996 --- [restartedMain] com.wechat.routine.RoutineApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-06-13 10:41:29.446  INFO 20996 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-06-13 10:41:29.447  INFO 20996 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-06-13 10:41:30.652  INFO 20996 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=01833c9e-6387-3684-8006-a9f62dc95c35
+2023-06-13 10:41:31.319  INFO 20996 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9001 (http)
+2023-06-13 10:41:31.327  INFO 20996 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-06-13 10:41:31.328  INFO 20996 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2023-06-13 10:41:31.445  INFO 20996 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-06-13 10:41:31.446  INFO 20996 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1999 ms
+2023-06-13 10:41:32.177  INFO 20996 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2023-06-13 10:41:32.309  WARN 20996 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2023-06-13 10:41:32.815  INFO 20996 --- [restartedMain] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2023-06-13 10:41:33.126  WARN 20996 --- [restartedMain] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2023-06-13 10:41:33.200  INFO 20996 --- [restartedMain] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2023-06-13 10:41:33.226  INFO 20996 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2023-06-13 10:41:33.231  INFO 20996 --- [restartedMain] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-06-13 10:41:33.249  INFO 20996 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2023-06-13 10:41:33.249  INFO 20996 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2023-06-13 10:41:33.249  INFO 20996 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2023-06-13 10:41:33.249  INFO 20996 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2023-06-13 10:41:33.249  INFO 20996 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2023-06-13 10:41:33.249  INFO 20996 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2023-06-13 10:41:33.249  INFO 20996 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2023-06-13 10:41:33.794  INFO 20996 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2023-06-13 10:41:33.800  INFO 20996 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2023-06-13 10:41:33.803  INFO 20996 --- [restartedMain] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2023-06-13 10:41:33.808  INFO 20996 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1686624093807 with initial instances count: 0
+2023-06-13 10:41:33.810  INFO 20996 --- [restartedMain] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application ROUTINE with eureka with status UP
+2023-06-13 10:41:33.811  INFO 20996 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1686624093811, current=UP, previous=STARTING]
+2023-06-13 10:41:33.812  INFO 20996 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001: registering service...
+2023-06-13 10:41:33.834  INFO 20996 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9001 (http) with context path ''
+2023-06-13 10:41:33.836  INFO 20996 --- [restartedMain] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 9001
+2023-06-13 10:41:33.862  INFO 20996 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001 - registration status: 204
+2023-06-13 10:41:34.092  INFO 20996 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2023-06-13 10:41:34.107  INFO 20996 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2023-06-13 10:41:34.235  INFO 20996 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2023-06-13 10:41:34.484  INFO 20996 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getLeadersUsingGET_1
+2023-06-13 10:41:34.603  INFO 20996 --- [restartedMain] com.wechat.routine.RoutineApplication    : Started RoutineApplication in 6.022 seconds (JVM running for 6.915)
+2023-06-13 10:41:35.228  INFO 20996 --- [http-nio-9001-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-13 10:41:35.228  INFO 20996 --- [http-nio-9001-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-06-13 10:41:35.230  INFO 20996 --- [http-nio-9001-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2023-06-13 10:41:40.029  INFO 20996 --- [scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-06-13 10:41:40.140  INFO 20996 --- [scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-06-13 10:42:03.815  INFO 20996 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2023-06-13 10:42:03.816  INFO 20996 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2023-06-13 10:42:03.816  INFO 20996 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2023-06-13 10:42:03.816  INFO 20996 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2023-06-13 10:42:03.816  INFO 20996 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2023-06-13 10:42:03.816  INFO 20996 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+2023-06-13 10:42:03.816  INFO 20996 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2023-06-13 10:42:03.839  INFO 20996 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2023-06-13 10:46:33.267  INFO 20996 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-06-13 10:51:33.279  INFO 20996 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-06-13 10:52:36.326  WARN 20996 --- [http-nio-9001-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.security.SignatureException: token不能为空]
+2023-06-13 10:53:02.689  INFO 20996 --- [SpringApplicationShutdownHook] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application ROUTINE with eureka with status DOWN
+2023-06-13 10:53:02.690  INFO 20996 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1686624782690, current=DOWN, previous=UP]
+2023-06-13 10:53:02.690  INFO 20996 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001: registering service...
+2023-06-13 10:53:02.702  INFO 20996 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001 - registration status: 204
+2023-06-13 10:53:02.863  INFO 20996 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-06-13 10:53:02.873  INFO 20996 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-06-13 10:53:02.874  INFO 20996 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2023-06-13 10:53:05.876  WARN 20996 --- [DiscoveryClient-0] c.netflix.discovery.TimedSupervisorTask  : task supervisor shutting down, can't accept the task
+2023-06-13 10:53:05.877  INFO 20996 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2023-06-13 10:53:05.881  INFO 20996 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001 - deregister  status: 200
+2023-06-13 10:53:05.887  INFO 20996 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2023-06-13 10:53:12.521  INFO 24716 --- [restartedMain] com.wechat.routine.RoutineApplication    : Starting RoutineApplication using Java 1.8.0_333 on DESKTOP-8P780U0 with PID 24716 (C:\Users\huangfuluyu\IdeaProjects\small-routine\routine\target\classes started by huangfuluyu in C:\Users\huangfuluyu\IdeaProjects\small-routine)
+2023-06-13 10:53:12.524  INFO 24716 --- [restartedMain] com.wechat.routine.RoutineApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-06-13 10:53:12.576  INFO 24716 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-06-13 10:53:12.577  INFO 24716 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-06-13 10:53:13.801  INFO 24716 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=01833c9e-6387-3684-8006-a9f62dc95c35
+2023-06-13 10:53:14.473  INFO 24716 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9001 (http)
+2023-06-13 10:53:14.482  INFO 24716 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-06-13 10:53:14.482  INFO 24716 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2023-06-13 10:53:14.605  INFO 24716 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-06-13 10:53:14.605  INFO 24716 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2028 ms
+2023-06-13 10:53:15.325  INFO 24716 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2023-06-13 10:53:15.442  WARN 24716 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2023-06-13 10:53:15.946  INFO 24716 --- [restartedMain] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2023-06-13 10:53:16.254  WARN 24716 --- [restartedMain] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2023-06-13 10:53:16.328  INFO 24716 --- [restartedMain] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2023-06-13 10:53:16.359  INFO 24716 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2023-06-13 10:53:16.364  INFO 24716 --- [restartedMain] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-06-13 10:53:16.381  INFO 24716 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2023-06-13 10:53:16.382  INFO 24716 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2023-06-13 10:53:16.382  INFO 24716 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2023-06-13 10:53:16.382  INFO 24716 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2023-06-13 10:53:16.382  INFO 24716 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2023-06-13 10:53:16.382  INFO 24716 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2023-06-13 10:53:16.382  INFO 24716 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2023-06-13 10:53:16.998  INFO 24716 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2023-06-13 10:53:17.001  INFO 24716 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2023-06-13 10:53:17.003  INFO 24716 --- [restartedMain] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2023-06-13 10:53:17.007  INFO 24716 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1686624797006 with initial instances count: 1
+2023-06-13 10:53:17.009  INFO 24716 --- [restartedMain] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application ROUTINE with eureka with status UP
+2023-06-13 10:53:17.009  INFO 24716 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1686624797009, current=UP, previous=STARTING]
+2023-06-13 10:53:17.011  INFO 24716 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001: registering service...
+2023-06-13 10:53:17.030  INFO 24716 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9001 (http) with context path ''
+2023-06-13 10:53:17.032  INFO 24716 --- [restartedMain] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 9001
+2023-06-13 10:53:17.053  INFO 24716 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001 - registration status: 204
+2023-06-13 10:53:17.269  INFO 24716 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2023-06-13 10:53:17.282  INFO 24716 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2023-06-13 10:53:17.321  INFO 24716 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2023-06-13 10:53:17.470  INFO 24716 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getLeadersUsingGET_1
+2023-06-13 10:53:17.537  INFO 24716 --- [restartedMain] com.wechat.routine.RoutineApplication    : Started RoutineApplication in 5.836 seconds (JVM running for 6.738)
+2023-06-13 10:53:20.025  INFO 24716 --- [scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-06-13 10:53:20.136  INFO 24716 --- [scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-06-13 10:53:26.558  INFO 24716 --- [http-nio-9001-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-13 10:53:26.558  INFO 24716 --- [http-nio-9001-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-06-13 10:53:26.559  INFO 24716 --- [http-nio-9001-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-06-13 10:53:48.326  INFO 24716 --- [SpringApplicationShutdownHook] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application ROUTINE with eureka with status DOWN
+2023-06-13 10:53:48.327  INFO 24716 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1686624828327, current=DOWN, previous=UP]
+2023-06-13 10:53:48.327  INFO 24716 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001: registering service...
+2023-06-13 10:53:48.331  INFO 24716 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001 - registration status: 204
+2023-06-13 10:53:48.494  INFO 24716 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-06-13 10:53:48.502  INFO 24716 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-06-13 10:53:48.503  INFO 24716 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2023-06-13 10:53:51.505  INFO 24716 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2023-06-13 10:53:51.522  INFO 24716 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001 - deregister  status: 200
+2023-06-13 10:53:51.527  INFO 24716 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2023-06-13 10:53:58.457  INFO 4508 --- [restartedMain] com.wechat.routine.RoutineApplication    : Starting RoutineApplication using Java 1.8.0_333 on DESKTOP-8P780U0 with PID 4508 (C:\Users\huangfuluyu\IdeaProjects\small-routine\routine\target\classes started by huangfuluyu in C:\Users\huangfuluyu\IdeaProjects\small-routine)
+2023-06-13 10:53:58.460  INFO 4508 --- [restartedMain] com.wechat.routine.RoutineApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-06-13 10:53:58.515  INFO 4508 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-06-13 10:53:58.515  INFO 4508 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-06-13 10:53:59.770  INFO 4508 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=01833c9e-6387-3684-8006-a9f62dc95c35
+2023-06-13 10:54:00.429  INFO 4508 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9001 (http)
+2023-06-13 10:54:00.438  INFO 4508 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-06-13 10:54:00.438  INFO 4508 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2023-06-13 10:54:00.559  INFO 4508 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-06-13 10:54:00.559  INFO 4508 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2043 ms
+2023-06-13 10:54:01.274  INFO 4508 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2023-06-13 10:54:01.398  WARN 4508 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2023-06-13 10:54:01.911  INFO 4508 --- [restartedMain] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2023-06-13 10:54:02.229  WARN 4508 --- [restartedMain] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2023-06-13 10:54:02.320  INFO 4508 --- [restartedMain] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2023-06-13 10:54:02.355  INFO 4508 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2023-06-13 10:54:02.361  INFO 4508 --- [restartedMain] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-06-13 10:54:02.385  INFO 4508 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2023-06-13 10:54:02.385  INFO 4508 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2023-06-13 10:54:02.385  INFO 4508 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2023-06-13 10:54:02.385  INFO 4508 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2023-06-13 10:54:02.385  INFO 4508 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2023-06-13 10:54:02.385  INFO 4508 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2023-06-13 10:54:02.385  INFO 4508 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2023-06-13 10:54:03.060  INFO 4508 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2023-06-13 10:54:03.062  INFO 4508 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2023-06-13 10:54:03.065  INFO 4508 --- [restartedMain] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2023-06-13 10:54:03.070  INFO 4508 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1686624843069 with initial instances count: 0
+2023-06-13 10:54:03.072  INFO 4508 --- [restartedMain] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application ROUTINE with eureka with status UP
+2023-06-13 10:54:03.073  INFO 4508 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1686624843073, current=UP, previous=STARTING]
+2023-06-13 10:54:03.075  INFO 4508 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001: registering service...
+2023-06-13 10:54:03.107  INFO 4508 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9001 (http) with context path ''
+2023-06-13 10:54:03.108  INFO 4508 --- [restartedMain] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 9001
+2023-06-13 10:54:03.138  INFO 4508 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001 - registration status: 204
+2023-06-13 10:54:03.383  INFO 4508 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2023-06-13 10:54:03.398  INFO 4508 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2023-06-13 10:54:03.432  INFO 4508 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2023-06-13 10:54:03.589  INFO 4508 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getLeadersUsingGET_1
+2023-06-13 10:54:03.663  INFO 4508 --- [restartedMain] com.wechat.routine.RoutineApplication    : Started RoutineApplication in 6.117 seconds (JVM running for 7.115)
+2023-06-13 10:54:20.023  INFO 4508 --- [scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-06-13 10:54:20.134  INFO 4508 --- [scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-06-13 10:54:33.063  INFO 4508 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2023-06-13 10:54:33.064  INFO 4508 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2023-06-13 10:54:33.064  INFO 4508 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2023-06-13 10:54:33.064  INFO 4508 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2023-06-13 10:54:33.064  INFO 4508 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2023-06-13 10:54:33.064  INFO 4508 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+2023-06-13 10:54:33.064  INFO 4508 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2023-06-13 10:54:33.088  INFO 4508 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2023-06-13 10:58:08.231  INFO 4508 --- [SpringApplicationShutdownHook] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application ROUTINE with eureka with status DOWN
+2023-06-13 10:58:08.231  INFO 4508 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1686625088231, current=DOWN, previous=UP]
+2023-06-13 10:58:08.231  INFO 4508 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001: registering service...
+2023-06-13 10:58:08.248  INFO 4508 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001 - registration status: 204
+2023-06-13 10:58:08.407  INFO 4508 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-06-13 10:58:08.416  INFO 4508 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-06-13 10:58:08.416  INFO 4508 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2023-06-13 10:58:11.422  INFO 4508 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2023-06-13 10:58:11.438  INFO 4508 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001 - deregister  status: 200
+2023-06-13 10:58:11.447  INFO 4508 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2023-06-13 10:58:18.393  INFO 16808 --- [restartedMain] com.wechat.routine.RoutineApplication    : Starting RoutineApplication using Java 1.8.0_333 on DESKTOP-8P780U0 with PID 16808 (C:\Users\huangfuluyu\IdeaProjects\small-routine\routine\target\classes started by huangfuluyu in C:\Users\huangfuluyu\IdeaProjects\small-routine)
+2023-06-13 10:58:18.396  INFO 16808 --- [restartedMain] com.wechat.routine.RoutineApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-06-13 10:58:18.454  INFO 16808 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-06-13 10:58:18.454  INFO 16808 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-06-13 10:58:19.662  INFO 16808 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=01833c9e-6387-3684-8006-a9f62dc95c35
+2023-06-13 10:58:20.353  INFO 16808 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9001 (http)
+2023-06-13 10:58:20.362  INFO 16808 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-06-13 10:58:20.363  INFO 16808 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2023-06-13 10:58:20.487  INFO 16808 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-06-13 10:58:20.487  INFO 16808 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2033 ms
+2023-06-13 10:58:21.222  INFO 16808 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2023-06-13 10:58:21.345  WARN 16808 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2023-06-13 10:58:22.107  INFO 16808 --- [restartedMain] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2023-06-13 10:58:22.433  WARN 16808 --- [restartedMain] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2023-06-13 10:58:22.506  INFO 16808 --- [restartedMain] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2023-06-13 10:58:22.533  INFO 16808 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2023-06-13 10:58:22.537  INFO 16808 --- [restartedMain] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-06-13 10:58:22.556  INFO 16808 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2023-06-13 10:58:22.556  INFO 16808 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2023-06-13 10:58:22.556  INFO 16808 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2023-06-13 10:58:22.556  INFO 16808 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2023-06-13 10:58:22.556  INFO 16808 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2023-06-13 10:58:22.556  INFO 16808 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2023-06-13 10:58:22.556  INFO 16808 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2023-06-13 10:58:23.118  INFO 16808 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2023-06-13 10:58:23.121  INFO 16808 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2023-06-13 10:58:23.124  INFO 16808 --- [restartedMain] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2023-06-13 10:58:23.128  INFO 16808 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1686625103127 with initial instances count: 1
+2023-06-13 10:58:23.130  INFO 16808 --- [restartedMain] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application ROUTINE with eureka with status UP
+2023-06-13 10:58:23.130  INFO 16808 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1686625103130, current=UP, previous=STARTING]
+2023-06-13 10:58:23.132  INFO 16808 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001: registering service...
+2023-06-13 10:58:23.152  INFO 16808 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9001 (http) with context path ''
+2023-06-13 10:58:23.154  INFO 16808 --- [restartedMain] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 9001
+2023-06-13 10:58:23.177  INFO 16808 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001 - registration status: 204
+2023-06-13 10:58:23.400  INFO 16808 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2023-06-13 10:58:23.420  INFO 16808 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2023-06-13 10:58:23.451  INFO 16808 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2023-06-13 10:58:23.602  INFO 16808 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getLeadersUsingGET_1
+2023-06-13 10:58:23.690  INFO 16808 --- [restartedMain] com.wechat.routine.RoutineApplication    : Started RoutineApplication in 6.138 seconds (JVM running for 7.034)
+2023-06-13 10:58:34.141  INFO 16808 --- [http-nio-9001-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-13 10:58:34.141  INFO 16808 --- [http-nio-9001-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-06-13 10:58:34.143  INFO 16808 --- [http-nio-9001-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2023-06-13 10:58:40.020  INFO 16808 --- [scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-06-13 10:58:40.124  INFO 16808 --- [scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-06-13 11:01:56.435  INFO 16808 --- [SpringApplicationShutdownHook] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application ROUTINE with eureka with status DOWN
+2023-06-13 11:01:56.435  INFO 16808 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1686625316435, current=DOWN, previous=UP]
+2023-06-13 11:01:56.436  INFO 16808 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001: registering service...
+2023-06-13 11:01:56.456  INFO 16808 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001 - registration status: 204
+2023-06-13 11:01:56.609  INFO 16808 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-06-13 11:01:56.617  INFO 16808 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-06-13 11:01:56.617  INFO 16808 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2023-06-13 11:01:59.623  INFO 16808 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2023-06-13 11:01:59.641  INFO 16808 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001 - deregister  status: 200
+2023-06-13 11:01:59.646  INFO 16808 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2023-06-13 11:02:07.037  INFO 22468 --- [restartedMain] com.wechat.routine.RoutineApplication    : Starting RoutineApplication using Java 1.8.0_333 on DESKTOP-8P780U0 with PID 22468 (C:\Users\huangfuluyu\IdeaProjects\small-routine\routine\target\classes started by huangfuluyu in C:\Users\huangfuluyu\IdeaProjects\small-routine)
+2023-06-13 11:02:07.038  INFO 22468 --- [restartedMain] com.wechat.routine.RoutineApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-06-13 11:02:07.094  INFO 22468 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-06-13 11:02:07.095  INFO 22468 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-06-13 11:02:08.360  INFO 22468 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=01833c9e-6387-3684-8006-a9f62dc95c35
+2023-06-13 11:02:08.997  INFO 22468 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9001 (http)
+2023-06-13 11:02:09.008  INFO 22468 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-06-13 11:02:09.008  INFO 22468 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2023-06-13 11:02:09.124  INFO 22468 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-06-13 11:02:09.124  INFO 22468 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2029 ms
+2023-06-13 11:02:09.903  INFO 22468 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2023-06-13 11:02:10.027  WARN 22468 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2023-06-13 11:02:10.540  INFO 22468 --- [restartedMain] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2023-06-13 11:02:10.863  WARN 22468 --- [restartedMain] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2023-06-13 11:02:10.941  INFO 22468 --- [restartedMain] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2023-06-13 11:02:10.972  INFO 22468 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2023-06-13 11:02:10.977  INFO 22468 --- [restartedMain] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-06-13 11:02:10.997  INFO 22468 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2023-06-13 11:02:10.997  INFO 22468 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2023-06-13 11:02:10.997  INFO 22468 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2023-06-13 11:02:10.997  INFO 22468 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2023-06-13 11:02:10.997  INFO 22468 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2023-06-13 11:02:10.997  INFO 22468 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2023-06-13 11:02:10.997  INFO 22468 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2023-06-13 11:02:11.559  INFO 22468 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2023-06-13 11:02:11.561  INFO 22468 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2023-06-13 11:02:11.563  INFO 22468 --- [restartedMain] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2023-06-13 11:02:11.568  INFO 22468 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1686625331567 with initial instances count: 0
+2023-06-13 11:02:11.570  INFO 22468 --- [restartedMain] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application ROUTINE with eureka with status UP
+2023-06-13 11:02:11.571  INFO 22468 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1686625331571, current=UP, previous=STARTING]
+2023-06-13 11:02:11.572  INFO 22468 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001: registering service...
+2023-06-13 11:02:11.593  INFO 22468 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9001 (http) with context path ''
+2023-06-13 11:02:11.594  INFO 22468 --- [restartedMain] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 9001
+2023-06-13 11:02:11.617  INFO 22468 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001 - registration status: 204
+2023-06-13 11:02:11.830  INFO 22468 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2023-06-13 11:02:11.849  INFO 22468 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2023-06-13 11:02:11.881  INFO 22468 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2023-06-13 11:02:12.037  INFO 22468 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getLeadersUsingGET_1
+2023-06-13 11:02:12.110  INFO 22468 --- [restartedMain] com.wechat.routine.RoutineApplication    : Started RoutineApplication in 5.911 seconds (JVM running for 6.832)
+2023-06-13 11:02:20.039  INFO 22468 --- [scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-06-13 11:02:20.273  INFO 22468 --- [scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-06-13 11:02:25.095  INFO 22468 --- [http-nio-9001-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-13 11:02:25.096  INFO 22468 --- [http-nio-9001-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-06-13 11:02:25.098  INFO 22468 --- [http-nio-9001-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2023-06-13 11:02:41.571  INFO 22468 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2023-06-13 11:02:41.572  INFO 22468 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2023-06-13 11:02:41.572  INFO 22468 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2023-06-13 11:02:41.572  INFO 22468 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2023-06-13 11:02:41.572  INFO 22468 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2023-06-13 11:02:41.572  INFO 22468 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+2023-06-13 11:02:41.572  INFO 22468 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2023-06-13 11:02:41.594  INFO 22468 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2023-06-13 11:02:46.150  INFO 22468 --- [SpringApplicationShutdownHook] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application ROUTINE with eureka with status DOWN
+2023-06-13 11:02:46.150  INFO 22468 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1686625366150, current=DOWN, previous=UP]
+2023-06-13 11:02:46.151  INFO 22468 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001: registering service...
+2023-06-13 11:02:46.161  INFO 22468 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001 - registration status: 204
+2023-06-13 11:02:46.322  INFO 22468 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-06-13 11:02:46.330  INFO 22468 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-06-13 11:02:46.331  INFO 22468 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2023-06-13 11:02:49.333  INFO 22468 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2023-06-13 11:02:49.350  INFO 22468 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001 - deregister  status: 200
+2023-06-13 11:02:49.355  INFO 22468 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2023-06-13 11:02:57.775  INFO 7092 --- [restartedMain] com.wechat.routine.RoutineApplication    : Starting RoutineApplication using Java 1.8.0_333 on DESKTOP-8P780U0 with PID 7092 (C:\Users\huangfuluyu\IdeaProjects\small-routine\routine\target\classes started by huangfuluyu in C:\Users\huangfuluyu\IdeaProjects\small-routine)
+2023-06-13 11:02:57.782  INFO 7092 --- [restartedMain] com.wechat.routine.RoutineApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-06-13 11:02:57.898  INFO 7092 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-06-13 11:02:57.899  INFO 7092 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-06-13 11:02:59.383  INFO 7092 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=01833c9e-6387-3684-8006-a9f62dc95c35
+2023-06-13 11:03:00.016  INFO 7092 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9001 (http)
+2023-06-13 11:03:00.145  INFO 7092 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2245 ms
+2023-06-13 11:03:00.887  INFO 7092 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2023-06-13 11:03:01.006  WARN 7092 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2023-06-13 11:03:01.515  INFO 7092 --- [restartedMain] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2023-06-13 11:03:01.833  WARN 7092 --- [restartedMain] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2023-06-13 11:03:01.905  INFO 7092 --- [restartedMain] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2023-06-13 11:03:01.932  INFO 7092 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2023-06-13 11:03:01.936  INFO 7092 --- [restartedMain] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-06-13 11:03:01.955  INFO 7092 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2023-06-13 11:03:01.955  INFO 7092 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2023-06-13 11:03:01.956  INFO 7092 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2023-06-13 11:03:01.956  INFO 7092 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2023-06-13 11:03:01.956  INFO 7092 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2023-06-13 11:03:01.956  INFO 7092 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2023-06-13 11:03:01.956  INFO 7092 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2023-06-13 11:03:02.498  INFO 7092 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2023-06-13 11:03:02.500  INFO 7092 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2023-06-13 11:03:02.502  INFO 7092 --- [restartedMain] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2023-06-13 11:03:02.506  INFO 7092 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1686625382505 with initial instances count: 0
+2023-06-13 11:03:02.508  INFO 7092 --- [restartedMain] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application ROUTINE with eureka with status UP
+2023-06-13 11:03:02.509  INFO 7092 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1686625382509, current=UP, previous=STARTING]
+2023-06-13 11:03:02.511  INFO 7092 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001: registering service...
+2023-06-13 11:03:02.530  INFO 7092 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9001 (http) with context path ''
+2023-06-13 11:03:02.532  INFO 7092 --- [restartedMain] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 9001
+2023-06-13 11:03:02.554  INFO 7092 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001 - registration status: 204
+2023-06-13 11:03:02.774  INFO 7092 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2023-06-13 11:03:02.794  INFO 7092 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2023-06-13 11:03:02.825  INFO 7092 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2023-06-13 11:03:02.976  INFO 7092 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getLeadersUsingGET_1
+2023-06-13 11:03:03.042  INFO 7092 --- [restartedMain] com.wechat.routine.RoutineApplication    : Started RoutineApplication in 6.495 seconds (JVM running for 7.416)
+2023-06-13 11:03:03.044  INFO 7092 --- [SpringApplicationShutdownHook] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application ROUTINE with eureka with status DOWN
+2023-06-13 11:03:03.044  INFO 7092 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1686625383044, current=DOWN, previous=UP]
+2023-06-13 11:03:03.044  INFO 7092 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001: registering service...
+2023-06-13 11:03:03.049  INFO 7092 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001 - registration status: 204
+2023-06-13 11:03:03.218  INFO 7092 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2023-06-13 11:03:06.236  INFO 7092 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2023-06-13 11:03:06.253  INFO 7092 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001 - deregister  status: 200
+2023-06-13 11:03:06.257  INFO 7092 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2023-06-13 11:03:13.765  INFO 20552 --- [restartedMain] com.wechat.routine.RoutineApplication    : Starting RoutineApplication using Java 1.8.0_333 on DESKTOP-8P780U0 with PID 20552 (C:\Users\huangfuluyu\IdeaProjects\small-routine\routine\target\classes started by huangfuluyu in C:\Users\huangfuluyu\IdeaProjects\small-routine)
+2023-06-13 11:03:13.768  INFO 20552 --- [restartedMain] com.wechat.routine.RoutineApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-06-13 11:03:13.819  INFO 20552 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-06-13 11:03:13.819  INFO 20552 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-06-13 11:03:14.786  INFO 20552 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=9d38af32-e584-3cb4-b625-0259ffc71842
+2023-06-13 11:03:15.466  INFO 20552 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9001 (http)
+2023-06-13 11:03:15.476  INFO 20552 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-06-13 11:03:15.476  INFO 20552 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2023-06-13 11:03:15.598  INFO 20552 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-06-13 11:03:15.599  INFO 20552 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1779 ms
+2023-06-13 11:03:16.448  WARN 20552 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2023-06-13 11:03:16.744  INFO 20552 --- [restartedMain] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2023-06-13 11:03:17.088  WARN 20552 --- [restartedMain] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2023-06-13 11:03:17.162  INFO 20552 --- [restartedMain] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2023-06-13 11:03:17.189  INFO 20552 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2023-06-13 11:03:17.194  INFO 20552 --- [restartedMain] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-06-13 11:03:17.221  INFO 20552 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2023-06-13 11:03:17.221  INFO 20552 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2023-06-13 11:03:17.221  INFO 20552 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2023-06-13 11:03:17.221  INFO 20552 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2023-06-13 11:03:17.221  INFO 20552 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2023-06-13 11:03:17.221  INFO 20552 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2023-06-13 11:03:17.221  INFO 20552 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2023-06-13 11:03:17.839  INFO 20552 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2023-06-13 11:03:17.841  INFO 20552 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2023-06-13 11:03:17.844  INFO 20552 --- [restartedMain] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2023-06-13 11:03:17.848  INFO 20552 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1686625397847 with initial instances count: 0
+2023-06-13 11:03:17.850  INFO 20552 --- [restartedMain] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application ROUTINE with eureka with status UP
+2023-06-13 11:03:17.851  INFO 20552 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1686625397851, current=UP, previous=STARTING]
+2023-06-13 11:03:17.852  INFO 20552 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001: registering service...
+2023-06-13 11:03:17.878  INFO 20552 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9001 (http) with context path ''
+2023-06-13 11:03:17.879  INFO 20552 --- [restartedMain] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 9001
+2023-06-13 11:03:17.900  INFO 20552 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001 - registration status: 204
+2023-06-13 11:03:18.135  INFO 20552 --- [restartedMain] com.wechat.routine.RoutineApplication    : Started RoutineApplication in 5.216 seconds (JVM running for 6.188)
+2023-06-13 11:03:20.019  INFO 20552 --- [scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-06-13 11:03:20.127  INFO 20552 --- [scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-06-13 11:03:26.230  INFO 20552 --- [http-nio-9001-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-13 11:03:26.231  INFO 20552 --- [http-nio-9001-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-06-13 11:03:26.232  INFO 20552 --- [http-nio-9001-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-06-13 11:03:26.278  WARN 20552 --- [http-nio-9001-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.security.SignatureException: token不能为空]
+2023-06-13 11:03:27.299  WARN 20552 --- [http-nio-9001-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.security.SignatureException: token不能为空]
+2023-06-13 11:03:47.851  INFO 20552 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2023-06-13 11:03:47.852  INFO 20552 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2023-06-13 11:03:47.852  INFO 20552 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2023-06-13 11:03:47.852  INFO 20552 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2023-06-13 11:03:47.852  INFO 20552 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2023-06-13 11:03:47.852  INFO 20552 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+2023-06-13 11:03:47.852  INFO 20552 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2023-06-13 11:03:47.872  INFO 20552 --- [DiscoveryClient-CacheRefreshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2023-06-13 11:03:55.869  INFO 20552 --- [Thread-2] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application ROUTINE with eureka with status DOWN
+2023-06-13 11:03:55.869  INFO 20552 --- [Thread-2] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1686625435869, current=DOWN, previous=UP]
+2023-06-13 11:03:55.870  INFO 20552 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001: registering service...
+2023-06-13 11:03:55.880  INFO 20552 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001 - registration status: 204
+2023-06-13 11:03:56.072  INFO 20552 --- [Thread-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-06-13 11:03:56.081  INFO 20552 --- [Thread-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-06-13 11:03:56.082  INFO 20552 --- [Thread-2] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2023-06-13 11:03:59.096  INFO 20552 --- [Thread-2] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2023-06-13 11:03:59.113  INFO 20552 --- [Thread-2] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ROUTINE/routine-9001 - deregister  status: 200
+2023-06-13 11:03:59.118  INFO 20552 --- [Thread-2] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient

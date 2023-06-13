@@ -39,8 +39,18 @@ public class RoutineFaultWorkResp implements Serializable {
     public String faultAddress;
     @ApiModelProperty("详细地址")
     public String faultDetailAddress;
-    @ApiModelProperty("问题说明")
+    @ApiModelProperty("处理记录")
     public String questionInfo;
+    @ApiModelProperty("业务类型")
+    private Integer serviceType;
+    @ApiModelProperty("网管资源信息")
+    private String webInfo;
+    @ApiModelProperty("故障原因")
+    private Integer faultCause;
+    @ApiModelProperty("故障子原因")
+    private Float faultCauseSon;
+    @ApiModelProperty("打卡位置")
+    private String punchInfo;
     @ApiModelProperty("解决故障图片")
     public String solveImg;
     @ApiModelProperty("维护人员Id")
@@ -53,7 +63,7 @@ public class RoutineFaultWorkResp implements Serializable {
     public String remarks;
     @ApiModelProperty("是否上门（0 不上门,1上门）")
     public String door;
-    @ApiModelProperty("点位打卡位置")
+    @ApiModelProperty("是否打卡")
     public String punch;
     @ApiModelProperty("确认工单: 未确认：0 已确认：1")
     public Integer workConfirm;

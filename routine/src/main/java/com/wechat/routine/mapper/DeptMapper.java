@@ -17,5 +17,5 @@ import java.util.List;
 public interface DeptMapper {
     List<Dept> listByIdDepts(Integer id);
 
-    Dept listByFullNameDept(String fullName);
+    List<Dept> listByFullNameDept(String fullName);
 }

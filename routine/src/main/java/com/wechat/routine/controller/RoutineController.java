@@ -81,6 +81,9 @@ public class RoutineController {
     @Autowired
     RoutineMessageMapper routineMessageMapper;
 
+    @Autowired
+    RoutineAreaPhoneMapper routineAreaPhoneMapper;
+
     /**
      * 维护人员登陆
      */
@@ -97,6 +100,7 @@ public class RoutineController {
                 JSONObject js = new JSONObject();
                 js.set("token", token);
                 js.set("id", user.getId());
+                js.set("name",user.getName());
                 return ApiResponse.ofStatus(ExceptionEnum.OK, js);
             }
         }
@@ -146,7 +150,7 @@ public class RoutineController {
             }
 
             //插入工单
-            int num = routineFaultWorkMapper.selectCount() + 1;
+            int num = routineFaultWorkMapper.selectCount(DateUtil.today()) + 1;
             String workId = "HZ-ZX-" + DateUtil.today() + "-" + num;
             RoutineFaultWork faultWork = new RoutineFaultWork();
             BeanUtils.copyProperties(req, faultWork);
@@ -174,9 +178,11 @@ public class RoutineController {
 //        deptMapper.listBySimplenameDepts();
             String area = req.getFaultAddress().substring(6, 8);
 
-            Dept dept = deptMapper.listByFullNameDept(area);
-
-            List<User> users = userMapper.selectByDeptId(dept.getId().intValue());
+            //也通知区级管理员，sql语句
+            List<Dept> depts = deptMapper.listByFullNameDept(area);
+            List<Long> deptIds = depts.stream().map(Dept::getId).collect(Collectors.toList());
+            List<Integer> intDeptIds = deptIds.stream().map(Long::intValue).collect(Collectors.toList());
+            List<User> users = userMapper.selectByDeptId(intDeptIds);
             users.forEach(o -> {
                 RoutineMessage adminMessage = new RoutineMessage();
                 adminMessage.setWorkId(workId);
@@ -189,7 +195,7 @@ public class RoutineController {
             log.info("======报障结束======");
             return ApiResponse.ofStatus(ExceptionEnum.OK, resultToken);
         }catch (Exception e){
-            throw new RuntimeException("系统异常");
+            throw new RuntimeException(e.getMessage());
         }
     }
 
@@ -200,10 +206,11 @@ public class RoutineController {
     @GetMapping("/getUserFailureRecord")
     public ApiResponse getUserFailureRecord(@RequestParam Long userPhone) {
         RoutineFaultWorkResp workResp = new RoutineFaultWorkResp();
-        RoutineFaultWork userFaultWork = routineFaultWorkMapper.selectByUserPhone(userPhone);
-        if (userFaultWork == null) {
+        List<RoutineFaultWork> userFaultWorks = routineFaultWorkMapper.selectByUserPhone(userPhone);
+        if (userFaultWorks == null || userFaultWorks.size()==0) {
             return ApiResponse.ofSuccess(new RoutineFaultWorkResp());
         }
+        RoutineFaultWork userFaultWork = userFaultWorks.get(0);
         log.info("------查询报障记录------" + userPhone);
         BeanUtils.copyProperties(userFaultWork, workResp);
         return ApiResponse.ofSuccess(workResp);
@@ -368,6 +375,7 @@ public class RoutineController {
         BeanUtils.copyProperties(req, faultWork);
         RoutineFaultWork faultWork1 = routineFaultWorkMapper.selectByWorkId(req.getWorkId());
         int confirm = faultWork1.getWorkConfirm();
+        faultWork.setOldMaintainerId(faultWork1.getOldMaintainerId());
         faultWork.setId(faultWork1.getId());
         faultWork.setWorkConfirm(1);
         faultWork.setWorkState(3);
@@ -503,9 +511,26 @@ public class RoutineController {
     @ApiImplicitParam(name = "maintainerId", value = "维护人员id")
     public ApiResponse getLeaders(@RequestParam Integer maintainerId) {
         RoutineMaintainer maintainer = routineMaintainerMapper.selectByPrimaryKey(maintainerId);
-        List<Integer> leaderIds = Stream.of(maintainer.getLeaderIds().replace(" ", "").split(",")).map(Integer::valueOf).collect(Collectors.toList());
-        List<User> users = userMapper.selectAllByIdUsers(leaderIds);
+        if(maintainer!=null){
+            List<Integer> leaderIds = Stream.of(maintainer.getLeaderIds().replace(" ", "").split(",")).map(Integer::valueOf).collect(Collectors.toList());
+            List<User> users = userMapper.selectAllByIdUsers(leaderIds);
+            return ApiResponse.ofStatus(ExceptionEnum.OK, users);
+        }
+        return ApiResponse.ofStatus(ExceptionEnum.OK,new User());
+    }
+
+    /**
+     * 获取上级管理员列表
+     *
+     * @return
+     */
+    @ApiOperation("获取市级管理员列表")
+    @GetMapping("/getCityLeaders")
+    public ApiResponse getLeaders() {
+        //市级管理员id
+        List<User> users = userMapper.selectByRoleIdUsers(6);
         return ApiResponse.ofStatus(ExceptionEnum.OK, users);
+
     }
 
     /**
@@ -553,14 +578,24 @@ public class RoutineController {
     @PostMapping("/addQuis")
     @Transactional(rollbackFor = Exception.class)
     public ApiResponse addQuis(@RequestBody RoutineScore routineScore) {
+
         if (!routineScore.getWorkId().equals("")) {
             val faultWork = routineFaultWorkMapper.selectByWorkId(routineScore.getWorkId());
             if (faultWork != null) {
                 if (faultWork.getWorkScore() == 1) {
-                    return ApiResponse.of(-100, null, null);
+                    return ApiResponse.of(-100, "请勿重复评价！", null);
                 }
             }
         }
+
+        if(routineScore.getUserId()!=null){
+            RoutineUser user = routineUserMapper.selectByPrimaryKey(routineScore.getUserId());
+            System.out.println(user.getUserUnit());
+            if(user!=null){
+                routineScore.setUnitName(user.getUserUnit());
+            }
+        }
+
         routineScoreMapper.insertRoutineScore(routineScore);
         if (!routineScore.getWorkId().equals("")) {
             routineFaultWorkMapper.updateByScoreState(routineScore.getWorkId());
@@ -596,7 +631,9 @@ public class RoutineController {
     @PostMapping("/local")
     public ApiResponse upload(MultipartFile uploadFile,
                               HttpServletRequest request) {
-        String host = "https://4159k5886f.zicp.vip";
+          String host = "https://hzzxzj.top";
+//        String host = "https://59v57235h5.oicp.vip";
+//        String host = "https://4159k5886f.zicp.vip";
         // 在 uploadPath 文件夹中通过日期对上传的文件归类保存
         // 比如：/2019/06/06/cf13891e-4b95-4000-81eb-b6d70ae44930.png
         String format = sdf.format(new Date());
@@ -685,4 +722,15 @@ public class RoutineController {
         return ApiResponse.ofStatus(ExceptionEnum.OK, result);
     }
 
+    @ApiOperation("查询区县电话")
+    @GetMapping(value = "/queryAreaPhoneAll")
+    public ApiResponse queryAreaPhoneAll(){
+        List<RoutineAreaPhone> result;
+        try {
+            result = routineAreaPhoneMapper.selectAll();
+        }catch (Exception e){
+            return ApiResponse.ofSuccess(new ArrayList<>());
+        }
+        return ApiResponse.ofSuccess(result);
+    }
 }

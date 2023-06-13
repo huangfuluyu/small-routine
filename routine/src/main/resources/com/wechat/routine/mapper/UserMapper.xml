@@ -40,11 +40,14 @@
     </select>
     <select id="selectByDeptId" resultMap="BaseResultMap">
       select <include refid="Base_Column_List"/>
-          from sys_user where deptid =#{deptId}
+          from sys_user where deptid in
+              <foreach collection="deptIds" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+              </foreach>
     </select>
   <select id="selectAllByIdUsers" resultMap="BaseResultMap" parameterType="java.lang.Long">
     select <include refid="Base_Column_List"/>
-    from sys_user where id in 
+    from sys_user where status = 1 and  id in
                   <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
                         #{item}
                   </foreach>
@@ -56,6 +59,11 @@
   <select id="selectById" resultMap="BaseResultMap">
     select <include refid="Base_Column_List"/>
     from sys_user where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByRoleIdUsers" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/>
+    from sys_user where roleid = #{roleId,jdbcType=INTEGER}
   </select>
 
 

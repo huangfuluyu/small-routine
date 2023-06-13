@@ -20,7 +20,7 @@ public interface RoutineFaultWorkMapper {
 
     int updateWorkSateByPrimaryKey(RoutineFaultWork row);
 
-    RoutineFaultWork selectByUserPhone(Long userPhone);
+    List<RoutineFaultWork> selectByUserPhone(Long userPhone);
 
     List<RoutineFaultWork> selectAllByWorkStateAndId(Integer workState, Integer id);
     List<RoutineFaultWork> selectAllByWorkConfirmAndId(Integer workConfirm, Integer id);
@@ -28,7 +28,7 @@ public interface RoutineFaultWorkMapper {
 
     RoutineFaultWork selectByWorkId(String workId);
 
-    int selectCount();
+    int selectCount(String toDay);
 
     int updateConFirmWork(RoutineFaultWork row);
 

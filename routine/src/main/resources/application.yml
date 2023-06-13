@@ -7,7 +7,7 @@ spring:
   servlet:
     multipart:
       enabled: true
-      location: D:\tempFilePath\
+      location: C:\tempFilePath\
       file-size-threshold: 5MB
       max-file-size: 20MB
   application:
@@ -37,6 +37,8 @@ config:
     expire: 1000000000
     # header 名称
     header: token
+zx:
+  swagger-open: false
 
 
 

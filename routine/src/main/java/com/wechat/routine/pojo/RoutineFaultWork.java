@@ -32,6 +32,11 @@ public class RoutineFaultWork extends BaseTable {
     public String faultDetailAddress;
 
     public String questionInfo;
+    public Integer serviceType;
+    public String webInfo;
+    public Integer faultCause;
+    public Float faultCauseSon;
+    public String punchInfo;
 
     public String solveImg;
 
@@ -56,4 +61,11 @@ public class RoutineFaultWork extends BaseTable {
 
     public static final long serialVersionUID = 1L;
 
+    public String getPunchInfo() {
+        return punchInfo;
+    }
+
+    public void setPunchInfo(String punchInfo) {
+        this.punchInfo = punchInfo;
+    }
 }

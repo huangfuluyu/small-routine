@@ -26,16 +26,20 @@ public class WebConfig implements WebMvcConfigurer {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry){
-        registry.addInterceptor(tokenInterceptor).addPathPatterns("/**");
-//                .excludePathPatterns("/hf/login")
-//                .excludePathPatterns("/hf/addFailure")
+        registry.addInterceptor(tokenInterceptor).addPathPatterns("/**")
+                .excludePathPatterns("/hf/addQuis")
+                .excludePathPatterns("/hf/login")
+                .excludePathPatterns("/hf/addFailure")
+                .excludePathPatterns("/hf/queryAreaPhoneAll");
 //                .excludePathPatterns("/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**");
     }
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("swagger-ui.html")
-                .addResourceLocations("classpath:/META-INF/resources/");
+//        registry.addResourceHandler("swagger-ui.html")
+//                .addResourceLocations("classpath:/META-INF/resources/");
+//        registry.addResourceHandler("/api-docs")
+//                .addResourceLocations("classpath:/META-INF/resources/");
         registry.addResourceHandler("/webjars/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");
 

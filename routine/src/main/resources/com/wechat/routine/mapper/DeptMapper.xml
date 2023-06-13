@@ -19,7 +19,7 @@
                  where id = #{id}
   </select>
   <select id="listByFullNameDept" resultMap="BaseResultMap">
-    select <include refid="Base_Column_List"/> from sys_dept where fullname like concat('%',#{fullName},'%','管理','%')
+    select <include refid="Base_Column_List"/> from sys_dept where fullname like concat('%',#{fullName},'%','管理','%') or id = 28
   </select>
 
 

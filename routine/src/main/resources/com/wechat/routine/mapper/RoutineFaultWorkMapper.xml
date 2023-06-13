@@ -14,6 +14,11 @@
     <result column="fault_address" jdbcType="VARCHAR" property="faultAddress" />
     <result column="fault_detail_address" jdbcType="VARCHAR" property="faultDetailAddress" />
     <result column="question_info" jdbcType="VARCHAR" property="questionInfo"/>
+    <result column="service_type" jdbcType="INTEGER" property="serviceType"/>
+    <result column="web_info" jdbcType="VARCHAR" property="webInfo"/>
+    <result column="fault_cause" jdbcType="INTEGER" property="faultCause"/>
+    <result column="fault_cause_son" jdbcType="INTEGER" property="faultCauseSon"/>
+    <result column="punch_info" jdbcType="VARCHAR" property="punchInfo"/>
     <result column="solve_img" jdbcType="VARCHAR" property="solveImg" />
       <result column="old_maintainer_id" jdbcType="INTEGER" property="oldMaintainerId"/>
     <result column="maintainer_id" jdbcType="INTEGER" property="maintainerId" />
@@ -32,6 +37,7 @@
 
   <sql id="Base_Column_List">
     id, work_id, user_unit,user_name,user_gender,user_phone, fault_info, fault_img, work_time, fault_address, fault_detail_address, question_info,
+    service_type,web_info,fault_cause,fault_cause_son,punch_info,
     solve_img, old_maintainer_id, maintainer_id, remarks, door, punch, work_deal_with_status, work_state, work_score, work_confirm, create_time, modify_time,dispatch_time,admin_id
   </sql>
 
@@ -47,7 +53,8 @@
     solve_img, maintainer_id, remarks, door, punch )
     values (#{workId,jdbcType=VARCHAR},#{userUnit,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR},#{userGender,jdbcType=VARCHAR},#{userPhone,jdbcType=BIGINT},#{faultInfo,jdbcType=VARCHAR},
       #{faultImg,jdbcType=VARCHAR}, #{workTime,jdbcType=TIMESTAMP}, #{faultAddress,jdbcType=VARCHAR},
-      #{faultDetailAddress,jdbcType=VARCHAR},#{questionInfo,jdbcType=VARCHAR}, #{solveImg,jdbcType=VARCHAR}, #{maintainerId,jdbcType=INTEGER},
+      #{faultDetailAddress,jdbcType=VARCHAR},#{questionInfo,jdbcType=VARCHAR},
+      #{solveImg,jdbcType=VARCHAR}, #{maintainerId,jdbcType=INTEGER},
       #{remarks,jdbcType=VARCHAR}, #{door,jdbcType=VARCHAR}, #{punch,jdbcType=VARCHAR})
     <selectKey resultType="java.lang.Long" keyProperty="id">
         SELECT LAST_INSERT_ID() AS id
@@ -98,6 +105,11 @@
                                 fault_detail_address = #{faultDetailAddress,jdbcType=VARCHAR},
                                 remarks = #{remarks,jdbcType=VARCHAR},
                                 question_info= #{questionInfo,jdbcType=VARCHAR},
+                                service_type=#{serviceType,jdbcType=INTEGER},
+                                web_info=#{webInfo,jdbcType=VARCHAR},
+                                fault_cause=#{faultCause,jdbcType=INTEGER},
+                                fault_cause_son=#{faultCauseSon,jdbcType=INTEGER},
+                                punch_info=#{punchInfo,jdbcType=VARCHAR},
                                 solve_img= #{solveImg,jdbcType=VARCHAR},
                                 old_maintainer_id = #{oldMaintainerId,jdbcType=INTEGER},
                                 maintainer_id= #{maintainerId,jdbcType=INTEGER},
@@ -113,6 +125,7 @@
     <update id="updateByPunch" parameterType="com.wechat.routine.pojo.RoutineFaultWork">
         update routine_fault_work set
                                       punch= #{punch,jdbcType=VARCHAR},
+                                      punch_info = #{punchInfo,jdbcType=VARCHAR},
                                       work_confirm = #{workConfirm,jdbcType=INTEGER}
                                       where id = #{id,jdbcType=INTEGER}
     </update>
@@ -126,7 +139,7 @@
     select <include refid="Base_Column_List" />
     from routine_fault_work
     where user_phone = #{userPhone,jdbcType=BIGINT}
-    order by create_time Desc LIMIT  1
+    order by create_time Desc
   </select>
   <select id="selectAllByWorkStateAndId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
       select
@@ -144,8 +157,8 @@
         and work_id = #{workId,jdbcType=VARCHAR}
     </if>
   </select>
-  <select id="selectCount" resultType="java.lang.Integer">
-    select count(*)  from routine_fault_work
+  <select id="selectCount" resultType="java.lang.Integer" parameterType="java.lang.String">
+    select count(*)  from routine_fault_work where work_id like CONCAT('%',#{toDay},'%')
   </select>
   <select id="selectAllByWorkConfirmAndId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
     select

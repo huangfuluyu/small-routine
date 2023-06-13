@@ -9,7 +9,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @MapperScan(basePackages = {"com.wechat.routine.mapper"})
 @SpringBootApplication
-@EnableSwagger2
+//@EnableSwagger2
 @EnableScheduling
 public class RoutineApplication {
     public static void main(String[] args) {
